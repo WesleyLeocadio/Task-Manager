@@ -19,4 +19,5 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="cadastrar">Cadastrar</string>
+    <string name="erro_inesperado">Algo de errado aconteceu. TENTE NOVAMENTE!</string>
 </resources>

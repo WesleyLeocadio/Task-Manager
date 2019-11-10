@@ -2,10 +2,12 @@ package com.example.taskmanager.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.taskmanager.R
 import com.example.taskmanager.connectionBD.AppDatabase
 import androidx.room.Room
 import com.example.taskmanager.business.UserBusiness
+import com.example.taskmanager.util.ValidationException
 
 import kotlinx.android.synthetic.main.activity_register_user.*
 
@@ -34,10 +36,18 @@ private lateinit var  userBusiness:UserBusiness
     }
 
     private fun salveUser(){
-        val name=txtName.text.toString()
-        val telephone=txtNumber.text.toString()
-        val email=txtEmail.text.toString()
-        val password=txtPassword.text.toString()
-        userBusiness.insert(name,telephone,email,password)
+        try {
+
+            val name=txtName.text.toString()
+            val telephone=txtNumber.text.toString()
+            val email=txtEmail.text.toString()
+            val password=txtPassword.text.toString()
+            userBusiness.insert(name,telephone,email,password)
+        }catch (e:ValidationException){
+            Toast.makeText(this,e.message,Toast.LENGTH_LONG).show()
+        }catch (e:Exception){
+            Toast.makeText(this,getString(R.string.erro_inesperado),Toast.LENGTH_LONG).show()
+
+        }
     }
 }
