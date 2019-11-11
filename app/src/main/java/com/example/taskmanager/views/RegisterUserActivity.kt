@@ -38,12 +38,7 @@ class RegisterUserActivity : AppCompatActivity() {
 
     private fun salveUser(){
         try {
-
-            val name=txtName.text.toString()
-            val telephone=txtNumber.text.toString()
-            val email=txtEmail.text.toString()
-            val password=txtPassword.text.toString()
-            userBusiness.insert(name,telephone,email,password)
+            userBusiness.insert(txtName.text.toString(),txtNumber.text.toString(),txtEmail.text.toString(),txtPassword.text.toString())
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }catch (e:ValidationException){
@@ -52,5 +47,13 @@ class RegisterUserActivity : AppCompatActivity() {
             Toast.makeText(this,getString(R.string.erro_inesperado),Toast.LENGTH_LONG).show()
 
         }
+        clearFields()
+    }
+
+    private fun clearFields(){
+       txtName.setText("")
+        txtNumber.setText("")
+        txtEmail.setText("")
+        txtPassword.setText("")
     }
 }
