@@ -39,6 +39,9 @@ interface UserDao {
     @Query("SELECT * FROM user  WHERE  email=:email")
     fun isEmailExistent(email:String):Boolean
 
+    @Query("SELECT * FROM user  WHERE  email=:email AND password=:password")
+    fun login(email: String,password:String):User
+
 
 
 

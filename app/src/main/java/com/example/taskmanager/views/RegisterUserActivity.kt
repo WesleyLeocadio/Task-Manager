@@ -1,5 +1,6 @@
 package com.example.taskmanager.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_register_user.*
 class RegisterUserActivity : AppCompatActivity() {
 
 
-private lateinit var  userBusiness:UserBusiness
+    private lateinit var userBusiness: UserBusiness
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +44,8 @@ private lateinit var  userBusiness:UserBusiness
             val email=txtEmail.text.toString()
             val password=txtPassword.text.toString()
             userBusiness.insert(name,telephone,email,password)
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }catch (e:ValidationException){
             Toast.makeText(this,e.message,Toast.LENGTH_LONG).show()
         }catch (e:Exception){

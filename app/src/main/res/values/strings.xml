@@ -22,4 +22,7 @@
     <string name="erro_inesperado">Algo de errado aconteceu. TENTE NOVAMENTE!</string>
     <string name="email_cadastrado">Email já cadastrado!</string>
     <string name="informar_campos">Informe todos os campos!</string>
+    <string name="entrar">Entrar</string>
+    <string name="sair">Sair</string>
+    <string name="login_e_senha_incorreto">Usuário e/ou senha incorreto!</string>
 </resources>
