@@ -1,10 +1,13 @@
 package com.example.taskmanager.business
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.room.Room
+import com.example.taskmanager.R
 import com.example.taskmanager.connectionBD.AppDatabase
 import com.example.taskmanager.domain.User
+import com.example.taskmanager.util.SecurityPreferences
 import com.example.taskmanager.util.ValidationException
 
 class UserBusiness(val context: Context) {
@@ -13,14 +16,27 @@ class UserBusiness(val context: Context) {
         Room.databaseBuilder(context, AppDatabase::class.java, "task-bd").allowMainThreadQueries()
             .build()
 
+    private val sharedPreferences:SecurityPreferences= SecurityPreferences(context)
+
+    @Throws(ValidationException::class)
     fun insert(name: String, telephone: String, email: String, password: String) {
 
         try {
             if (name.equals("") || telephone.equals("") || email.equals("") || password.equals("")) {
-                throw ValidationException("Informe todos os campos!")
+                throw ValidationException(context.getString(R.string.informar_campos))
             }
-            val user = User(name, telephone, email, password)
-            val userId = db.userDao().insert(user)
+            if(db.userDao().isEmailExistent(email)){
+                throw ValidationException(context.getString(R.string.email_cadastrado))
+
+            }
+
+             val id=db.userDao().insert(User(name, telephone, email, password))
+            sharedPreferences.setPreferences("USER_ID",id.toString())
+            sharedPreferences.setPreferences("USER_TELEFHONE",telephone)
+            sharedPreferences.setPreferences("USER_EMAIL",email)
+            sharedPreferences.setPreferences("USER_PASSWORD",password)
+
+
         } catch (e:Exception) {
             throw e
 
@@ -28,6 +44,7 @@ class UserBusiness(val context: Context) {
 
         // Log.i("teste","${db.userDao().listAll().toString()}")
     }
+
 
 
 }
