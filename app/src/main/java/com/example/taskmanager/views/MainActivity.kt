@@ -1,5 +1,6 @@
 package com.example.taskmanager.views
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,11 +12,16 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import com.example.taskmanager.R
+import com.example.taskmanager.util.SecurityPreferences
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    private lateinit var sharedPreferences: SecurityPreferences
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,23 +31,32 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        //menu lateral
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-
-        val navView: NavigationView = findViewById(R.id.nav_view)
-
-        val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home,
-                R.id.nav_gallery,
-                R.id.nav_slideshow
-            ), drawerLayout
+        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawer,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        drawer.setDrawerListener(toggle)
+        toggle.syncState()
+        //menu lateral
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        navigationView.setNavigationItemSelectedListener(this)
+
+        sharedPreferences = SecurityPreferences(this)
+
+
+    }
+
+    override fun onBackPressed() {
+        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
     }
 
     //menu superior direito
@@ -51,8 +66,34 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        val id = item.itemId
+
+        when (item.itemId) {
+            R.id.nav_done -> Toast.makeText(this, "foi", Toast.LENGTH_LONG).show()
+            R.id.nav_todo -> Toast.makeText(this, "foi", Toast.LENGTH_LONG).show()
+            R.id.nav_logout -> logout()
+
+
+        }
+
+        // Fecha o menu
+        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
+        drawer.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    private fun logout() {
+        sharedPreferences.setPreferences("USER_ID", "")
+        sharedPreferences.setPreferences("USER_NAME", "")
+        sharedPreferences.setPreferences("USER_TELEFHONE", "")
+        sharedPreferences.setPreferences("USER_EMAIL", "")
+        sharedPreferences.setPreferences("USER_PASSWORD", "")
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
+
+
     }
 }

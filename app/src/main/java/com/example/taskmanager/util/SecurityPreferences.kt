@@ -6,10 +6,10 @@ import android.content.SharedPreferences
 class SecurityPreferences (c: Context){
     private val sharedPreferences:SharedPreferences=c.getSharedPreferences("application",Context.MODE_PRIVATE)
 
-    fun setPreferences(key:String, value: String){sharedPreferences.edit().putString(key,"") }
+    fun setPreferences(key:String, value: String){sharedPreferences.edit().putString(key,value).commit() }
 
-    fun getPreferences(key: String){sharedPreferences.getString(key,"")}
+    fun getPreferences(key: String):String{
+        return sharedPreferences.getString(key,"").toString()}
 
-    fun removePreferences(key: String){sharedPreferences.edit().remove(key)
-    }
+
 }

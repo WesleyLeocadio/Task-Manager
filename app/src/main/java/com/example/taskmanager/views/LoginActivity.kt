@@ -32,7 +32,6 @@ class LoginActivity : AppCompatActivity() {
         if(!sharedPreferences.getPreferences("USER_ID").equals("")&& !sharedPreferences.getPreferences("USER_EMAIL").equals("") ){
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-
         }
 
     }
@@ -43,7 +42,10 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        btnSair.setOnClickListener { }
+        btnSair.setOnClickListener {
+            startActivity(Intent(this, RegisterUserActivity::class.java))
+            finish()
+        }
 
     }
 
