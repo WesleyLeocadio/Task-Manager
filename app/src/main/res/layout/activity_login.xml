@@ -1,46 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".views.LoginActivity">
-
-
-    <EditText
-        android:id="@+id/txtEmailLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/txtPasswordLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-       />
+    android:background="@color/background_login"
+    tools:context=".views.LoginActivity" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
+        android:orientation="vertical">
 
-      >
-    <Button
-        android:id="@+id/btnEntrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/entrar" />
+        <ImageView
+            android:id="@+id/logomarca"
+            android:layout_width="411dp"
+            android:layout_height="254dp"
+            android:layout_gravity="center"
+            app:srcCompat="@mipmap/logomarca" />
 
-    <Button
-        android:id="@+id/btnSair"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sair" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/email"
+            android:textColor="#EEE"/>
 
+        <EditText
+            android:id="@+id/txtEmailLogin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textColorHint="#CCC"
+            android:hint="@string/email"
+            android:background="@drawable/login_edit"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#EEE"
+            android:text="@string/password"
+            android:layout_marginTop="40dp"/>
+
+        <EditText
+            android:id="@+id/txtPasswordLogin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textColorHint="#CCC"
+            android:hint="@string/password_hint"
+            android:background="@drawable/login_edit"/>
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/lembrar_senha"
+            android:textColor="@color/colorText"
+            android:theme="@color/colorAccent"
+            android:textSize="6pt"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/btnEntrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="70dp"
+            android:text="@string/fazer_login"
+            android:textColor="#ffffff"
+            android:background="@drawable/login_edit"/>
+
+        <Button
+            android:id="@+id/btnCriarConta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="70dp"
+            android:text="@string/criar_conta"
+            android:textColor="#ffffff"
+            android:background="@drawable/login_edit"/>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

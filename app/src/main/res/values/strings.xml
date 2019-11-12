@@ -6,7 +6,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -25,4 +24,8 @@
     <string name="entrar">Entrar</string>
     <string name="sair">Sair</string>
     <string name="login_e_senha_incorreto">Usuário e/ou senha incorreto!</string>
+    <string name="password_hint">************</string>
+    <string name="lembrar_senha">Lembre minha senha</string>
+    <string name="fazer_login">Fazer login</string>
+    <string name="criar_conta">Criar conta</string>
 </resources>

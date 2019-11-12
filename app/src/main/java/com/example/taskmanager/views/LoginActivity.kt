@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        btnSair.setOnClickListener {
+        btnCriarConta.setOnClickListener {
             startActivity(Intent(this, RegisterUserActivity::class.java))
             finish()
         }
