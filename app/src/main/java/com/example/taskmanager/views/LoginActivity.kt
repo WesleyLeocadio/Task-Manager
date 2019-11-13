@@ -3,6 +3,7 @@ package com.example.taskmanager.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import androidx.room.Room
@@ -18,6 +19,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var userBusiness: UserBusiness
 
     private lateinit var sharedPreferences: SecurityPreferences
+
+    var dadosValidados:Boolean = false
 
     val db: AppDatabase by lazy {
         Room.databaseBuilder(
@@ -53,8 +56,13 @@ class LoginActivity : AppCompatActivity() {
 
     private fun buttons() {
         btnEntrar.setOnClickListener {
-            login()
-
+            dadosValidados = validarFormulario()
+            if (dadosValidados){
+                login()
+            }else{
+                Toast.makeText(this, getString(R.string.login_e_senha_incorreto), Toast.LENGTH_LONG)
+                    .show()
+            }
         }
 
         btnCriarConta.setOnClickListener {
@@ -71,14 +79,32 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
             clearFields()
-        } else {
-            Toast.makeText(this, getString(R.string.login_e_senha_incorreto), Toast.LENGTH_LONG)
-                .show()
         }
-
     }
+
      private fun clearFields(){
         txtEmailLogin.setText("")
          txtPasswordLogin.setText("")
+    }
+
+    private fun validarFormulario():Boolean{
+        //Regra de validação
+        var retorno = false
+
+        if (!TextUtils.isEmpty(txtEmailLogin.text.toString())){
+            retorno = true
+        }else{
+            txtEmailLogin.setError("Insira um email por favor")
+            txtEmailLogin.requestFocus()
+        }
+
+        if (!TextUtils.isEmpty(txtPasswordLogin.text.toString())){
+            retorno = true
+        }else{
+            txtPasswordLogin.setError("Insira uma senha por favor")
+            txtPasswordLogin.requestFocus()
+        }
+
+        return retorno
     }
 }

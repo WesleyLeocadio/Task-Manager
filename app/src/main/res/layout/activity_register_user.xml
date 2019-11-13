@@ -51,6 +51,7 @@
             android:ems="10"
             android:hint="@string/digite_telefone"
             android:textAlignment="center"
+            android:inputType="phone"
             android:textColor="@color/colorText"
             android:textColorHint="#CCC"
             android:autofillHints="" />
@@ -68,6 +69,7 @@
             android:textColor="@color/colorText"
             android:textColorHint="#CCC"
             android:hint="@string/digite_email"
+            android:inputType="textWebEmailAddress"
             android:background="@drawable/login_edit"
             android:autofillHints="" />
 
@@ -78,7 +80,6 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
-            android:inputType="textPassword"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
@@ -86,6 +87,7 @@
             android:textColor="@color/colorText"
             android:textColorHint="#CCC"
             android:hint="@string/password_hint"
+            android:inputType="textPassword"
             android:background="@drawable/login_edit"
             android:autofillHints="" />
 
