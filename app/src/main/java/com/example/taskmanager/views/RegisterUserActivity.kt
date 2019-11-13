@@ -32,7 +32,9 @@ class RegisterUserActivity : AppCompatActivity() {
         btnRegister.setOnClickListener {
             salveUser()
         }
-        btnCancel.setOnClickListener {  }
+        btnCancel.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
 
     }
 

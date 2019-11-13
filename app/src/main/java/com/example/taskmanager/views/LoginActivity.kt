@@ -51,7 +51,8 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun login() {
-        if (userBusiness.login(txtEmailLogin.text.toString(), txtPasswordLogin.text.toString())) {
+        // trim() : remove os espaços dos caracteres da direita e da esquerda
+        if (userBusiness.login(txtEmailLogin.text.toString().trim(), txtPasswordLogin.text.toString().trim())) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
             clearFields()

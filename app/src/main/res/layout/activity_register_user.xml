@@ -1,48 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".views.RegisterUserActivity">
+    android:background="@color/background_login"
+    android:focusableInTouchMode="true"
+    tools:context=".views.RegisterUserActivity" >
 
-    <EditText
-        android:id="@+id/txtName"
+    <LinearLayout
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/name" />
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
-    <EditText
-        android:id="@+id/txtNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/number" />
+        <TextView
+            android:id="@+id/nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/name"
+            android:textColor="#EEE"/>
 
-    <EditText
-        android:id="@+id/txtEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/txtPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
-
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cadastrar" />
-
-    <Button
-        android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cancelar" />
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textColorHint="#CCC"
+            android:hint="@string/digite_nome"
+            android:background="@drawable/login_edit"
+            android:autofillHints="" />
 
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/numero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/numero_telefone"
+            android:layout_marginTop="15dp"
+            android:textColor="#EEE"/>
+
+        <EditText
+            android:id="@+id/txtNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/login_edit"
+            android:ems="10"
+            android:hint="@string/digite_telefone"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textColorHint="#CCC"
+            android:autofillHints="" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/email"
+            android:layout_marginTop="15dp"
+            android:textColor="#EEE"/>
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textColorHint="#CCC"
+            android:hint="@string/digite_email"
+            android:background="@drawable/login_edit"
+            android:autofillHints="" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#EEE"
+            android:text="@string/password"
+            android:layout_marginTop="15dp"/>
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textColorHint="#CCC"
+            android:hint="@string/password_hint"
+            android:background="@drawable/login_edit"
+            android:autofillHints="" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="70dp"
+            android:text="@string/cadastrar"
+            android:textColor="#ffffff"
+            android:background="@drawable/login_edit"/>
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="70dp"
+            android:text="@string/cancelar"
+            android:textColor="#ffffff"
+            android:background="@drawable/login_edit"/>
+    </LinearLayout>
+</ScrollView>
