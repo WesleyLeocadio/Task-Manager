@@ -10,6 +10,8 @@ import com.example.taskmanager.connectionBD.AppDatabase
 import androidx.room.Room
 import com.example.taskmanager.business.UserBusiness
 import com.example.taskmanager.util.ValidationException
+import com.github.rtoshiro.util.format.SimpleMaskFormatter
+import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.activity_login.*
 
 import kotlinx.android.synthetic.main.activity_register_user.*
@@ -29,6 +31,8 @@ class RegisterUserActivity : AppCompatActivity() {
         buttons()
 
         userBusiness= UserBusiness(this)
+
+        mascaraNumber()
 
     }
 
@@ -103,5 +107,11 @@ class RegisterUserActivity : AppCompatActivity() {
         }
 
         return retorno
+    }
+
+    private fun mascaraNumber(){
+        var smf = SimpleMaskFormatter("(NN)NNNNN-NNNN")
+        var mtw = MaskTextWatcher(txtNumber,smf)
+        txtNumber.addTextChangedListener(mtw)
     }
 }
