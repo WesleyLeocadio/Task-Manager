@@ -10,10 +10,10 @@ import com.example.taskmanager.R
 import com.example.taskmanager.business.UserBusiness
 
 class HomeFragment : Fragment() {
-    private lateinit var userBusiness: UserBusiness
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
     }
 

@@ -3,9 +3,13 @@ package com.example.taskmanager.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.room.Room
 import com.example.taskmanager.R
 import com.example.taskmanager.business.UserBusiness
+import com.example.taskmanager.connectionBD.AppDatabase
+import com.example.taskmanager.domain.Subject
 import com.example.taskmanager.util.SecurityPreferences
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -15,10 +19,21 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SecurityPreferences
 
+    val db: AppDatabase by lazy {
+        Room.databaseBuilder(
+            this,
+            AppDatabase::class.java, "task-bd"
+        )
+            .allowMainThreadQueries()
+            .build()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+       // Log.i("teste","${db.subjectDao().listAll()[0].name}")
+
+        //db.subjectDao().insert(Subject("show","show",2))
 
         userBusiness = UserBusiness(this)
         sharedPreferences= SecurityPreferences(this)
