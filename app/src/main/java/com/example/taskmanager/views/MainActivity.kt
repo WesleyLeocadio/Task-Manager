@@ -2,21 +2,19 @@ package com.example.taskmanager.views
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.example.taskmanager.R
+import com.example.taskmanager.ui.done.DoneFragment
+import com.example.taskmanager.ui.subject.RegisterSubjectFragment
+import com.example.taskmanager.ui.todo.TodoFragment
 import com.example.taskmanager.util.SecurityPreferences
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -70,14 +68,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         val id = item.itemId
-
+        var fm = supportFragmentManager
+        var fl:Fragment?=null
         when (item.itemId) {
-            R.id.nav_done -> Toast.makeText(this, "foi", Toast.LENGTH_LONG).show()
-            R.id.nav_todo -> Toast.makeText(this, "foi", Toast.LENGTH_LONG).show()
+            R.id.nav_home -> fm.beginTransaction().replace(R.id.nav_host_fragment,
+                RegisterSubjectFragment(), "Fragment 1").commit()
+            R.id.nav_done -> fm.beginTransaction().replace(R.id.nav_host_fragment,
+                DoneFragment(), "Fragment 1").commit()
+
+            R.id.nav_todo -> fm.beginTransaction().replace(R.id.nav_host_fragment,
+                TodoFragment(), "Fragment 1").commit()
+
             R.id.nav_logout -> logout()
 
 
         }
+
 
         // Fecha o menu
         val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)

@@ -28,4 +28,13 @@
     <string name="lembrar_senha">Lembre minha senha</string>
     <string name="fazer_login">Fazer login</string>
     <string name="criar_conta">Criar conta</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="feita">Feita</string>
+    <string name="menu_done">done</string>
+    <string name="menu_todo">A fazer</string>
+    <string name="menu_logout">Sair</string>
+    <string name="description">Description</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
