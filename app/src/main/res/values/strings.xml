@@ -17,7 +17,6 @@
     <string name="number">Number</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="cadastrar">Cadastrar</string>
     <string name="erro_inesperado">Algo de errado aconteceu. TENTE NOVAMENTE!</string>
     <string name="email_cadastrado">Email já cadastrado!</string>
     <string name="informar_campos">Informe todos os campos!</string>
@@ -41,4 +40,5 @@
     <string name="menu_logout">Sair</string>
     <string name="description">Description</string>
     <string name="cancelar">Cancelar</string>
+    <string name="cadastrar">Cadastrar</string>
 </resources>

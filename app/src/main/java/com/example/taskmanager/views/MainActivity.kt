@@ -13,6 +13,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.taskmanager.R
 import com.example.taskmanager.ui.done.DoneFragment
+import com.example.taskmanager.ui.subject.HomeFragment
 import com.example.taskmanager.ui.subject.RegisterSubjectFragment
 import com.example.taskmanager.ui.todo.TodoFragment
 import com.example.taskmanager.util.SecurityPreferences
@@ -67,12 +68,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
-        val id = item.itemId
         var fm = supportFragmentManager
-        var fl:Fragment?=null
         when (item.itemId) {
             R.id.nav_home -> fm.beginTransaction().replace(R.id.nav_host_fragment,
+                HomeFragment(), "Fragment 1").commit()
+
+            R.id.nav_register -> fm.beginTransaction().replace(R.id.nav_host_fragment,
                 RegisterSubjectFragment(), "Fragment 1").commit()
+
             R.id.nav_done -> fm.beginTransaction().replace(R.id.nav_host_fragment,
                 DoneFragment(), "Fragment 1").commit()
 

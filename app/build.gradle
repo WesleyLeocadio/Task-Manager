@@ -47,5 +47,8 @@ dependencies {
 
     kapt 'android.arch.persistence.room:compiler:2.2.0-rc01'
 
+    implementation 'com.android.support:design:29.0.1'
+    implementation 'com.android.support:recyclerview-v7:29.0.1'
+
 
 }

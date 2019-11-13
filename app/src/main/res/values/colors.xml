@@ -5,4 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="background_login">#110C16</color>
     <color name="colorText">#ffffff</color>
+    <color name="backgroun_menu">#1F0F27</color>
+    <color name="buttnCancelar">#042992</color>
+
 </resources>
