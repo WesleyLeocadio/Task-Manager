@@ -81,6 +81,8 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
             clearFields()
+        }else{
+            Toast.makeText(this,getString(R.string.login_e_senha_incorreto),Toast.LENGTH_LONG).show()
         }
     }
 

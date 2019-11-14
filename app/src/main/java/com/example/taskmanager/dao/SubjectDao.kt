@@ -10,10 +10,11 @@ interface SubjectDao {
     @Query("SELECT * FROM subject")
     fun listAll(): List<Subject>
 
-
-
     @Insert
     fun insert(book: Subject): Long
+
+    @Query("SELECT * FROM subject  WHERE  name=:name")
+    fun isSubjectExistent(name:String):Boolean
 
 
 
