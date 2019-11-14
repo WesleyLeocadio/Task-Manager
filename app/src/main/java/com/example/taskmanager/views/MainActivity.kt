@@ -17,6 +17,7 @@ import com.example.taskmanager.ui.subject.HomeFragment
 import com.example.taskmanager.ui.subject.RegisterSubjectFragment
 import com.example.taskmanager.ui.todo.TodoFragment
 import com.example.taskmanager.util.SecurityPreferences
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var sharedPreferences: SecurityPreferences
@@ -46,6 +47,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         sharedPreferences = SecurityPreferences(this)
 
+
+        //botão +
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener {
+            startActivity(Intent(this,TaskActivity::class.java))
+        }
 
     }
 
