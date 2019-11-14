@@ -34,9 +34,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-       // Log.i("teste","${db.subjectDao().listAll()[0].name}")
+       // Log.i("teste","${db.subjectDao().listAll()[2].name}")
 
-        //db.subjectDao().insert(Subject("show","show",2))
+        //db.subjectDao().insert(Subject("POO","Professora Laura",2))
+        //db.subjectDao().insert(Subject("PDM","Professor Taniro",2))
+
 
         userBusiness = UserBusiness(this)
         sharedPreferences= SecurityPreferences(this)

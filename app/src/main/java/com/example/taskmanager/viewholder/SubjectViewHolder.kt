@@ -9,13 +9,13 @@ import com.example.taskmanager.R
 
 class SubjectViewHolder  (v: View) : RecyclerView.ViewHolder(v){
     var name:TextView
-    var telephone:TextView
+    var description:TextView
 
 
     init {
         Log.i("HOLDER", "Fazendo buscas por id...")
         name = v.findViewById(R.id.textInflaterName)
-        telephone = v.findViewById(R.id.textInfTelephone)
+        description = v.findViewById(R.id.textInfDescription)
 
 
 
