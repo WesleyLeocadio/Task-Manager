@@ -33,6 +33,7 @@
     <string name="digite_telefone">Digite seu número</string>
     <string name="campos_preenchidos">Todos os campos devem ser preenchidos</string>
     <string name="disciplina_cadastrada">Disciplina já cadastrada</string>
+    <string name="dados_incorretos"> Nome da disciplina e/ou descrição incorretos!</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
