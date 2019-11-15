@@ -34,10 +34,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-       // Log.i("teste","${db.subjectDao().listAll()[2].name}")
-
-       // db.subjectDao().insert(Subject("POO","Professora Laura",2))
+        //Log.i("teste","${db.subjectDao().listAll()[2].name}")
+        // db.subjectDao().insert(Subject("POO","Professora Laura",2))
         //db.subjectDao().insert(Subject("PDM","Professor Taniro",2))
+        //Log.i("teste","${db.taskDao().listAll()[0].description}")
 
 
         userBusiness = UserBusiness(this)
