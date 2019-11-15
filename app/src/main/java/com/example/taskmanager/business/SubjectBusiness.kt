@@ -1,6 +1,8 @@
 package com.example.taskmanager.business
 
 import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.room.Room
 import com.example.taskmanager.R
 import com.example.taskmanager.connectionBD.AppDatabase
@@ -20,15 +22,18 @@ class SubjectBusiness (val context: Context) {
 
     fun insert(name: String, description: String) {
         try {
+            Log.i("id","Name: ${name},  desc: ${description}")
+
             if (name.equals("") || description.equals("")) {
                 throw ValidationException(context.getString(R.string.informar_campos))
             }
             if (db.subjectDao().isSubjectExistent(name)) {
-                throw ValidationException(context.getString(R.string.disciplina_cadastrada))
+                throw ValidationException("Disciplina já foi cadastrada!")
             }
 
-            val idUser = sharedPreferences.getPreferences("USERID")
-            db.subjectDao().insert(Subject(name,description,idUser.toInt()))
+            db.subjectDao().insert(Subject(name,description,sharedPreferences.getPreferences("USER_ID").toInt()))
+            Toast.makeText(context,"Cadastro realizado!",Toast.LENGTH_SHORT).show()
+
         } catch (e: Exception) {
             throw e
         }

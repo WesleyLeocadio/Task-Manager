@@ -17,6 +17,9 @@ interface SubjectDao {
     fun isSubjectExistent(name:String):Boolean
 
 
+    @Query("SELECT * FROM subject  WHERE  id=:id")
+    fun isSubjectId(id:Int):Subject
+
 
 
 

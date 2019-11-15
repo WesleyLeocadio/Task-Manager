@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
        // Log.i("teste","${db.subjectDao().listAll()[2].name}")
 
-        //db.subjectDao().insert(Subject("POO","Professora Laura",2))
+       // db.subjectDao().insert(Subject("POO","Professora Laura",2))
         //db.subjectDao().insert(Subject("PDM","Professor Taniro",2))
 
 
