@@ -16,6 +16,7 @@ class TaskActivity : AppCompatActivity() {
 
     private lateinit var taskBusiness: TaskBusiness
 
+
     var dadosValidados:Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +26,7 @@ class TaskActivity : AppCompatActivity() {
         buttons()
 
         taskBusiness = TaskBusiness(this)
-
+        taskBusiness.SpinnerTeste(txtNameTask,spinner)
         mascaraDate()
     }
 

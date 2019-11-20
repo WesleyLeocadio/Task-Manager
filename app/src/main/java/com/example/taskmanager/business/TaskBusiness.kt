@@ -2,7 +2,8 @@ package com.example.taskmanager.business
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.room.Room
 import com.example.taskmanager.R
 import com.example.taskmanager.connectionBD.AppDatabase
@@ -20,6 +21,27 @@ class TaskBusiness (val context: Context) {
 
     @Throws(ValidationException::class)
 
+    fun SpinnerTeste(texto: TextView,menu: Spinner){
+
+        var disciplinas = (db.subjectDao().listAll())
+        var names = Array(disciplinas.size, { i -> i.toString() })
+        for (i in 0 until disciplinas.size) {
+            names[i] = disciplinas[i].name
+        }
+
+        menu.adapter = ArrayAdapter(this.context,android.R.layout.simple_spinner_dropdown_item,names)
+
+        menu.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                Toast.makeText(context,"Por favor, selecione uma opção",Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                texto.text = names[position]
+            }
+
+        }
+    }
     fun insert(name: String, description: String, date: String) {
         try {
             Log.i("id","Name: ${name},  desc: ${description}, date: ${date},")
