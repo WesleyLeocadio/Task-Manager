@@ -5,7 +5,7 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity
-class Task (var name: String,
+data class Task (var name: String,
             var description: String,
             var dueDate: String,
             var complete: Int,

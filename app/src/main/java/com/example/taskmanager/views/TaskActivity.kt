@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import androidx.core.view.get
 import com.example.taskmanager.R
 import com.example.taskmanager.business.TaskBusiness
 import com.example.taskmanager.util.ValidationException
 import com.github.rtoshiro.util.format.SimpleMaskFormatter
 import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.activity_task.*
+import kotlin.properties.Delegates
 
 class TaskActivity : AppCompatActivity() {
 
@@ -18,15 +20,14 @@ class TaskActivity : AppCompatActivity() {
 
 
     var dadosValidados:Boolean = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task)
 
         buttons()
-
         taskBusiness = TaskBusiness(this)
         taskBusiness.SpinnerTeste(txtNameTask,spinner)
+
         mascaraDate()
     }
 
@@ -87,7 +88,7 @@ class TaskActivity : AppCompatActivity() {
 
     private fun salveTask(){
         try {
-            taskBusiness.insert(txtNameTask.text.toString(),txtDescriptionTask.text.toString(),txtDate.text.toString())
+            taskBusiness.insert(txtNameTask.text.toString(),txtDescriptionTask.text.toString(),txtDate.text.toString(),1,spinner.id)
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }catch (e: ValidationException){

@@ -17,6 +17,7 @@ class TaskBusiness (val context: Context) {
         Room.databaseBuilder(context, AppDatabase::class.java, "task-bd").allowMainThreadQueries()
             .build()
 
+    private var id: Int = 0
     private val sharedPreferences: SecurityPreferences = SecurityPreferences(context)
 
     @Throws(ValidationException::class)
@@ -25,8 +26,11 @@ class TaskBusiness (val context: Context) {
 
         var disciplinas = (db.subjectDao().listAll())
         var names = Array(disciplinas.size, { i -> i.toString() })
+        var ids = Array(disciplinas.size, { i -> i.toInt() })
+
         for (i in 0 until disciplinas.size) {
             names[i] = disciplinas[i].name
+            ids[i] = disciplinas[i].id
         }
 
         menu.adapter = ArrayAdapter(this.context,android.R.layout.simple_spinner_dropdown_item,names)
@@ -38,13 +42,14 @@ class TaskBusiness (val context: Context) {
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 texto.text = names[position]
+                id=ids[position]
             }
 
         }
     }
-    fun insert(name: String, description: String, date: String) {
+    fun insert(name: String, description: String, date: String,complete:Int,idSubject:Int) {
         try {
-            Log.i("id","Name: ${name},  desc: ${description}, date: ${date},")
+            Log.i("id","Name: ${name},  desc: ${description}, date: ${date}, complete: ${complete}, idSubjet: ${id},")
 
             if (name.equals("") || description.equals("") || date.equals("")) {
                 throw ValidationException(context.getString(R.string.informar_campos))
@@ -54,8 +59,11 @@ class TaskBusiness (val context: Context) {
 
             }
 
-            db.taskDao().insert(Task(name,description,date,1,sharedPreferences.getPreferences("USER_ID").toInt()))
+            db.taskDao().insert(Task(name,description,date,1,id))
             Toast.makeText(context,"Cadastro realizado!", Toast.LENGTH_SHORT).show()
+            //Log.i("id","-------------------${db.taskDao().listAll()[1].description}")
+
+
 
         } catch (e: Exception) {
             throw e
