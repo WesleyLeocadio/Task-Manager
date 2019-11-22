@@ -10,6 +10,9 @@ interface TaskDao {
     @Query("SELECT * FROM task")
     fun listAll(): List<Task>
 
+    @Query("SELECT * FROM task  WHERE  complete=:complete")
+    fun listAllDone(complete:Int): List<Task>
+
     @Insert
     fun insert(book: Task): Long
 

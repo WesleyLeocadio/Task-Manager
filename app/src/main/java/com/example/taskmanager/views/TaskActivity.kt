@@ -88,7 +88,7 @@ class TaskActivity : AppCompatActivity() {
 
     private fun salveTask(){
         try {
-            taskBusiness.insert(txtNameTask.text.toString(),txtDescriptionTask.text.toString(),txtDate.text.toString(),1,spinner.id)
+            taskBusiness.insert(txtNameTask.text.toString(),txtDescriptionTask.text.toString(),txtDate.text.toString(),0)
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }catch (e: ValidationException){

@@ -10,11 +10,10 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
 import com.example.taskmanager.R
-import com.example.taskmanager.ui.done.DoneFragment
 import com.example.taskmanager.ui.subject.HomeFragment
 import com.example.taskmanager.ui.subject.RegisterSubjectFragment
+import com.example.taskmanager.ui.task.TaskFragment
 import com.example.taskmanager.ui.todo.TodoFragment
 import com.example.taskmanager.util.SecurityPreferences
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -84,10 +83,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 RegisterSubjectFragment(), "Fragment 1").commit()
 
             R.id.nav_done -> fm.beginTransaction().replace(R.id.nav_host_fragment,
-                DoneFragment(), "Fragment 1").commit()
+                TaskFragment(1), "Fragment 1").commit()
 
             R.id.nav_todo -> fm.beginTransaction().replace(R.id.nav_host_fragment,
-                TodoFragment(), "Fragment 1").commit()
+                TaskFragment(0), "Fragment 1").commit()
 
             R.id.nav_logout -> logout()
 

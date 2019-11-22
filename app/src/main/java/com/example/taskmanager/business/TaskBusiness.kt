@@ -47,7 +47,7 @@ class TaskBusiness (val context: Context) {
 
         }
     }
-    fun insert(name: String, description: String, date: String,complete:Int,idSubject:Int) {
+    fun insert(name: String, description: String, date: String,complete:Int) {
         try {
             Log.i("id","Name: ${name},  desc: ${description}, date: ${date}, complete: ${complete}, idSubjet: ${id},")
 
@@ -59,7 +59,7 @@ class TaskBusiness (val context: Context) {
 
             }
 
-            db.taskDao().insert(Task(name,description,date,1,id))
+            db.taskDao().insert(Task(name,description,date,complete,id))
             Toast.makeText(context,"Cadastro realizado!", Toast.LENGTH_SHORT).show()
             //Log.i("id","-------------------${db.taskDao().listAll()[1].description}")
 

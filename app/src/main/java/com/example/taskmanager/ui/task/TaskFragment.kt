@@ -1,20 +1,23 @@
-package com.example.taskmanager.ui.subject
+package com.example.taskmanager.ui.task
 
+import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import com.example.taskmanager.R
-import com.example.taskmanager.adapter.SubjectAdapterRecycler
-import com.example.taskmanager.connectionBD.AppDatabase
-import com.example.taskmanager.listener.SubjectListener
-import kotlinx.android.synthetic.main.fragment_home2.*
 
-class HomeFragment : Fragment() {
+import com.example.taskmanager.R
+import com.example.taskmanager.adapter.TaskAdapterRecycler
+import com.example.taskmanager.connectionBD.AppDatabase
+import com.example.taskmanager.listener.TaskListener
+import kotlinx.android.synthetic.main.fragment_task.*
+
+
+class TaskFragment(val x:Int) : Fragment() {
     val db: AppDatabase by lazy {
         Room.databaseBuilder(
             this!!.getContext()!!,
@@ -28,26 +31,24 @@ class HomeFragment : Fragment() {
         super.onResume()
 
 
-        var adapter = SubjectAdapterRecycler(this!!.getContext()!!, db.subjectDao().listAll())
-        recyclerview.adapter = adapter
+        var adapter = TaskAdapterRecycler(this!!.getContext()!!, db.taskDao().listAllDone(x))
+        recyclerviewTaskList.adapter = adapter
 
         val layout = LinearLayoutManager(this!!.getContext()!!, LinearLayoutManager.VERTICAL, false)
-        recyclerview.layoutManager = layout
+        recyclerviewTaskList.layoutManager = layout
 
 
-
-        recyclerview.addOnItemTouchListener(
-            SubjectListener(
+        recyclerviewTaskList.addOnItemTouchListener(
+            TaskListener(
                 this!!.getContext()!!,
-                recyclerview,
-                object : SubjectListener.OnItemClickListener {
+                recyclerviewTaskList,
+                object : TaskListener.OnItemClickListener {
                     override fun onItemClick(view: View, position: Int) {
 
 
                     }
 
                     override fun onItemLongClick(view: View, position: Int) {
-
 
                     }
                 })
@@ -61,8 +62,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_home2, container, false)
+        return inflater.inflate(R.layout.fragment_task, container, false)
     }
+
 
 }

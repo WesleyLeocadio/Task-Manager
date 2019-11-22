@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.subject.HomeFragment">
+    tools:context=".ui.task.TaskFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,8 +11,9 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
+            android:id="@+id/recyclerviewTaskList"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
+
 </FrameLayout>
