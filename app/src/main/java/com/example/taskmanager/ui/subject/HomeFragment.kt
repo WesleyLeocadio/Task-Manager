@@ -1,5 +1,6 @@
 package com.example.taskmanager.ui.subject
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.taskmanager.R
+import com.example.taskmanager.TaskSubjectActivity
 import com.example.taskmanager.adapter.SubjectAdapterRecycler
 import com.example.taskmanager.connectionBD.AppDatabase
 import com.example.taskmanager.listener.SubjectListener
@@ -42,13 +44,16 @@ class HomeFragment : Fragment() {
                 recyclerview,
                 object : SubjectListener.OnItemClickListener {
                     override fun onItemClick(view: View, position: Int) {
-
+                      //  Toast.makeText(context,"${adapter.id(position)}",Toast.LENGTH_LONG).show()
+                        var i = Intent(context, TaskSubjectActivity::class.java)
+                        var b = Bundle()
+                        b.putInt("id", adapter.id(position))
+                        i.putExtras(b)
+                        startActivity(i)
 
                     }
 
                     override fun onItemLongClick(view: View, position: Int) {
-
-
                     }
                 })
         )
@@ -60,8 +65,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_home2, container, false)
     }
 

@@ -1,18 +1,31 @@
 package com.example.taskmanager.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.example.taskmanager.domain.User
 import com.example.taskmanager.viewholder.SubjectViewHolder
 import com.example.taskmanager.R
+import com.example.taskmanager.connectionBD.AppDatabase
 import com.example.taskmanager.domain.Subject
 import com.example.taskmanager.domain.Task
 import com.example.taskmanager.viewholder.TaskViewHolder
+import java.util.ArrayList
 
 class TaskAdapterRecycler(var c: Context, var task: List<Task>) :
+
     RecyclerView.Adapter<TaskViewHolder>() {
+    val db: AppDatabase by lazy {
+        Room.databaseBuilder(
+            c,
+            AppDatabase::class.java, "task-bd"
+        )
+            .allowMainThreadQueries()
+            .build()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val view = LayoutInflater.from(c).inflate(R.layout.inflatertask, parent, false)
@@ -34,6 +47,21 @@ class TaskAdapterRecycler(var c: Context, var task: List<Task>) :
             holder.image.setImageResource(R.drawable.ic_todo)
         } else {
             holder.image.setImageResource(R.drawable.ic_done)
+        }
+
+        holder.image.setOnClickListener {
+            //Log.i("aqui"," antes :${taskAtual.complete}")
+            taskAtual.complete = 1
+            db.taskDao().atualizar(taskAtual)
+            notifyItemChanged(position)
+          //  Log.i("aqui"," depois :${taskAtual.complete}")
+            if (taskAtual.complete == 0) {
+                holder.image.setImageResource(R.drawable.ic_todo)
+            } else {
+               // task.removeAt(position)
+
+            }
+
         }
     }
 

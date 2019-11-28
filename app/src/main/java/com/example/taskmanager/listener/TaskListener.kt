@@ -6,6 +6,8 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
+import com.example.taskmanager.connectionBD.AppDatabase
 
 class TaskListener (val context: Context, val view: RecyclerView, val listener:OnItemClickListener) : RecyclerView.OnItemTouchListener  {
 
@@ -24,7 +26,8 @@ class TaskListener (val context: Context, val view: RecyclerView, val listener:O
                     val childView = view.findChildViewUnder(motionEvent.x, motionEvent.y)
                     if (childView != null) {
                         listener.onItemClick(childView, view.getChildAdapterPosition(childView))
-                        Log.i("Teste", "onSingleTapUp ")
+
+
                     }
                     return true
                 }

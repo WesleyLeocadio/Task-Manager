@@ -29,5 +29,7 @@ class SubjectAdapterRecycler(var c: Context, var subjects: List<Subject>) :
         holder.description.text = subjectAtual.description
     }
 
-
+    fun id(id: Int): Int {
+        return subjects.get(id).id
+    }
 }
