@@ -26,9 +26,12 @@ class TaskActivity : AppCompatActivity() {
 
         buttons()
         taskBusiness = TaskBusiness(this)
-        taskBusiness.SpinnerTeste(txtNameTask,spinner)
+        taskBusiness.SpinnerTeste(spinner)
 
         mascaraDate()
+        ActionBack()
+        tituloAction()
+
     }
 
     private fun buttons(){
@@ -111,5 +114,15 @@ class TaskActivity : AppCompatActivity() {
         var smf = SimpleMaskFormatter("NN/NN/NNNN")
         var mtw = MaskTextWatcher(txtDate,smf)
         txtDate.addTextChangedListener(mtw)
+    }
+
+    private fun ActionBack(){
+        val ab = supportActionBar
+        ab!!.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun tituloAction(){
+        val ab = supportActionBar
+        ab!!.setTitle(R.string.cadastro_tarefas)
     }
 }

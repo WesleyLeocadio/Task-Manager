@@ -29,9 +29,7 @@ class TaskSubjectActivity : AppCompatActivity() {
         var params = intent.extras
         var idSubject = params?.getInt("id")
 
-//        val sa = supportActionBar
-//
-//        sa!!.setDisplayHomeAsUpEnabled(true)
+        ActionBack()
 
        // Log.i("teste","${idSubject}")
         var adapter = TaskAdapterRecycler(this, db.taskDao().listAllTaskSubject(idSubject!!.toInt()))
@@ -54,5 +52,10 @@ class TaskSubjectActivity : AppCompatActivity() {
                     }
                 })
         )
+    }
+
+    private fun ActionBack(){
+        val ab = supportActionBar
+        ab!!.setDisplayHomeAsUpEnabled(true)
     }
 }

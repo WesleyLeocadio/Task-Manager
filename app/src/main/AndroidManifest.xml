@@ -9,8 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TaskSubjectActivity"></activity>
-        <activity android:name=".views.TaskActivity" />
+        <activity android:name=".TaskSubjectActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.MainActivity" />
+        </activity>
+        <activity android:name=".views.TaskActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.MainActivity" />
+        </activity>
         <activity
             android:name=".views.LoginActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">

@@ -36,6 +36,7 @@
     <string name="dados_incorretos"> Nome da disciplina e/ou descrição incorretos!</string>
     <string name="data_vencimento">Data de Vencimento</string>
     <string name="tarefa_cadastrada">Impossivel cadastrar uma tarefa com o mesmo nome</string>
+    <string name="cadastro_tarefas"> "Cadastro de Tarefas"</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

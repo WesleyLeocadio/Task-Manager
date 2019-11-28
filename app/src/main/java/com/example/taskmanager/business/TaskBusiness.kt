@@ -22,7 +22,7 @@ class TaskBusiness (val context: Context) {
 
     @Throws(ValidationException::class)
 
-    fun SpinnerTeste(texto: TextView,menu: Spinner){
+    fun SpinnerTeste(menu: Spinner){
 
         var disciplinas = (db.subjectDao().listAll())
         var names = Array(disciplinas.size, { i -> i.toString() })
@@ -41,7 +41,7 @@ class TaskBusiness (val context: Context) {
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                texto.text = names[position]
+                //texto.text = names[position]
                 id=ids[position]
             }
 
