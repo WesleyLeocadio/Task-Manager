@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.taskmanager.adapter.TaskAdapterRecycler
 import com.example.taskmanager.connectionBD.AppDatabase
+import com.example.taskmanager.domain.Task
 import com.example.taskmanager.listener.TaskListener
 import kotlinx.android.synthetic.main.activity_task_subject.*
 
@@ -32,7 +33,9 @@ class TaskSubjectActivity : AppCompatActivity() {
         ActionBack()
 
        // Log.i("teste","${idSubject}")
-        var adapter = TaskAdapterRecycler(this, db.taskDao().listAllTaskSubject(idSubject!!.toInt()))
+        var adapter = TaskAdapterRecycler(this,
+            db.taskDao().listAllTaskSubject(idSubject!!.toInt()) as MutableList<Task>
+        )
         recyclerviewTaskSubjectList.adapter = adapter
         val layout = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerviewTaskSubjectList.layoutManager = layout

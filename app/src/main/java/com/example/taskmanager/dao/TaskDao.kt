@@ -1,9 +1,6 @@
 package com.example.taskmanager.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.taskmanager.domain.Task
 import java.util.ArrayList
 
@@ -20,6 +17,11 @@ interface TaskDao {
 
     @Insert
     fun insert(book: Task): Long
+
+
+
+    @Delete
+    fun deletar(book: Task): Int
 
     @Query("SELECT * FROM task  WHERE  name=:name")
     fun isTaskExistent(name:String):Boolean

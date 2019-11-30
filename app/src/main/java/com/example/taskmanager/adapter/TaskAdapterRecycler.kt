@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.example.taskmanager.domain.User
@@ -15,7 +16,7 @@ import com.example.taskmanager.domain.Task
 import com.example.taskmanager.viewholder.TaskViewHolder
 import java.util.ArrayList
 
-class TaskAdapterRecycler(var c: Context, var task: List<Task>) :
+class TaskAdapterRecycler(var c: Context, var task:MutableList<Task>) :
 
     RecyclerView.Adapter<TaskViewHolder>() {
     val db: AppDatabase by lazy {
@@ -50,17 +51,21 @@ class TaskAdapterRecycler(var c: Context, var task: List<Task>) :
         }
 
         holder.image.setOnClickListener {
-            //Log.i("aqui"," antes :${taskAtual.complete}")
             taskAtual.complete = 1
             db.taskDao().atualizar(taskAtual)
             notifyItemChanged(position)
-          //  Log.i("aqui"," depois :${taskAtual.complete}")
-            if (taskAtual.complete == 0) {
-                holder.image.setImageResource(R.drawable.ic_todo)
-            } else {
-               // task.removeAt(position)
 
-            }
+        }
+
+
+
+        holder.imageDelete.setOnClickListener {
+
+            val id = taskAtual.id
+            db.taskDao().deletar(taskAtual)
+            Toast.makeText(c, "Deletou", Toast.LENGTH_SHORT).show()
+            task.removeAt(position)
+            notifyItemRemoved(position)
 
         }
     }

@@ -12,6 +12,8 @@ class TaskViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     var dueData: TextView
     var priority: TextView
     var image: ImageView
+    var imageDelete:ImageView
+    var imageEdit:ImageView
 
 
     init {
@@ -19,6 +21,8 @@ class TaskViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         dueData = v.findViewById(R.id.textInfDueData)
         priority = v.findViewById(R.id.textInfPriority)
         image = v.findViewById(R.id.imageTask)
+        imageEdit = v.findViewById(R.id.imageTaskEdit)
+        imageDelete= v.findViewById(R.id.imageTaskDelete)
 
 
     }

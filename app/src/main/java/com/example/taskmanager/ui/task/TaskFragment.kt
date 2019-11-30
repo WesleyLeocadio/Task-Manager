@@ -13,6 +13,7 @@ import androidx.room.Room
 import com.example.taskmanager.R
 import com.example.taskmanager.adapter.TaskAdapterRecycler
 import com.example.taskmanager.connectionBD.AppDatabase
+import com.example.taskmanager.domain.Task
 import com.example.taskmanager.listener.TaskListener
 import kotlinx.android.synthetic.main.fragment_task.*
 
@@ -31,7 +32,9 @@ class TaskFragment(val x:Int) : Fragment() {
         super.onResume()
 
 
-        var adapter = TaskAdapterRecycler(this!!.getContext()!!, db.taskDao().listAllDone(x))
+        var adapter = TaskAdapterRecycler(this!!.getContext()!!,
+            db.taskDao().listAllDone(x) as MutableList<Task>
+        )
         recyclerviewTaskList.adapter = adapter
 
         val layout = LinearLayoutManager(this!!.getContext()!!, LinearLayoutManager.VERTICAL, false)
