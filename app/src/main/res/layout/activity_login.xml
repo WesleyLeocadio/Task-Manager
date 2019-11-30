@@ -21,36 +21,47 @@
             app:srcCompat="@mipmap/logomarca" />
 
 
-
-        <EditText
-            android:id="@+id/txtEmailLogin"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:textColor="@color/colorText"
+            android:layout_height="wrap_content"
             android:textColorHint="#CCC"
-            android:hint="@string/email"
-            android:background="@drawable/login_edit"
-            android:drawableLeft="@drawable/user" />
+            android:hint="@string/email">
+            <EditText
+                android:id="@+id/txtEmailLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:textColor="@color/colorText"
+                android:background="@drawable/login_edit"
+                android:drawableLeft="@drawable/user"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-
-        <EditText
-            android:id="@+id/txtPasswordLogin"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:textColor="@color/colorText"
-            android:textColorHint="#CCC"
-            android:drawableLeft="@drawable/keys"
-            android:hint="@string/password"
-            android:background="@drawable/login_edit"/>
+            android:layout_height="wrap_content"
+            android:textColorHint="#CCC">
+            <!--app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#CCC" -->
+            <EditText
+                android:id="@+id/txtPasswordLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:textColor="@color/colorText"
+                android:textColorHint="#CCC"
+                android:drawableLeft="@drawable/keys"
+                android:hint="@string/password"
+                android:background="@drawable/login_edit"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <CheckBox
             android:id="@+id/checkBox"
@@ -61,7 +72,8 @@
             android:textColor="@color/colorText"
             android:theme="@color/colorAccent"
             android:textSize="6pt"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:buttonTint="@color/colorText"/>
 
         <Button
             android:id="@+id/btnEntrar"
