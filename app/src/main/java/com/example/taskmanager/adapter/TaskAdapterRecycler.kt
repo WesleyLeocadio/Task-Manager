@@ -1,9 +1,12 @@
 package com.example.taskmanager.adapter
 
+import android.app.Dialog
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
@@ -28,6 +31,10 @@ class TaskAdapterRecycler(var c: Context, var task:MutableList<Task>) :
             .build()
     }
 
+    lateinit var  dialog: Dialog
+    lateinit var botaoYes: Button
+    lateinit var botaoNo: Button
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val view = LayoutInflater.from(c).inflate(R.layout.inflatertask, parent, false)
         return TaskViewHolder(view)
@@ -41,7 +48,7 @@ class TaskAdapterRecycler(var c: Context, var task:MutableList<Task>) :
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         var taskAtual = task.get(position)
 
-        holder.description.text = taskAtual.description
+        holder.description.text = taskAtual.name
         holder.dueData.text = taskAtual.dueDate
         holder.priority.text = "Alta"
         if (taskAtual.complete == 0) {
@@ -61,12 +68,26 @@ class TaskAdapterRecycler(var c: Context, var task:MutableList<Task>) :
 
         holder.imageDelete.setOnClickListener {
 
-            val id = taskAtual.id
-            db.taskDao().deletar(taskAtual)
-            Toast.makeText(c, "Deletou", Toast.LENGTH_SHORT).show()
-            task.removeAt(position)
-            notifyItemRemoved(position)
+            dialog = Dialog(c)
+            dialog.setContentView(R.layout.dialog_delete)
+            dialog.setCancelable(true)
 
+            botaoYes = dialog.findViewById(R.id.yes)
+            botaoYes.setOnClickListener {
+                //val id = taskAtual.id
+                db.taskDao().deletar(taskAtual)
+                Toast.makeText(c,R.string.tarefa_delete, Toast.LENGTH_SHORT).show()
+                task.removeAt(position)
+                notifyItemRemoved(position)
+                dialog.dismiss()
+            }
+
+            botaoNo = dialog.findViewById(R.id.no)
+            botaoNo.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
         }
     }
 

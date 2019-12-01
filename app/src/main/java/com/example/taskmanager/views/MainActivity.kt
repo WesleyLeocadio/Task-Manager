@@ -108,7 +108,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         sharedPreferences.setPreferences("USER_PASSWORD", "")
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
-
-
     }
 }

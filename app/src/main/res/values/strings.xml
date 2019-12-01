@@ -7,6 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="menu_home">Home</string>
+    <string name="Principal">Principal</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
@@ -41,11 +42,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="feita">Feita</string>
-    <string name="menu_done">done</string>
-    <string name="menu_todo">A fazer</string>
+    <string name="menu_done">Tarefas Concluídas</string>
+    <string name="menu_todo">Tarefas à fazer</string>
     <string name="menu_logout">Sair</string>
     <string name="description">Description</string>
     <string name="cancelar">Cancelar</string>
-    <string name="cadastrar">Cadastrar</string>
+    <string name="cadastrar_tarefa">Cadastrar Tarefa</string>
+    <string name="cadastrar_disciplina">Cadastrar Disciplina</string>
     <string name="selecione_uma_disciplina">Selecione uma Disciplina:</string>
+    <string name="dialog_delete">Você tem certeza que deseja excluir essa tarefa?</string>
+    <string name="no_cancele">Não, cancele!</string>
+    <string name="yes_delete">Sim, delete!</string>
+    <string name="tarefa_delete">Tarefa deletada!</string>
+    <string name="nome_disciplina">Nome da Disciplina</string>
+    <string name="descricao_disciplina">Descrição da Disciplina</string>
+    <string name="nome_tarefa">Nome da Tarefa</string>
+    <string name="descricao_tarefa">Descrição da Tarefa</string>
 </resources>
