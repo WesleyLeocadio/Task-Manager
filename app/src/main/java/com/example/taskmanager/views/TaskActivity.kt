@@ -1,22 +1,24 @@
 package com.example.taskmanager.views
 
+import android.app.DatePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
-import androidx.core.view.get
+import androidx.appcompat.app.AppCompatActivity
 import com.example.taskmanager.R
 import com.example.taskmanager.business.TaskBusiness
 import com.example.taskmanager.util.ValidationException
-import com.github.rtoshiro.util.format.SimpleMaskFormatter
-import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.activity_task.*
-import kotlin.properties.Delegates
+import java.util.*
 
 class TaskActivity : AppCompatActivity() {
 
     private lateinit var taskBusiness: TaskBusiness
+    val c = Calendar.getInstance()
+    val year = c.get(Calendar.YEAR)
+    val month = c.get(Calendar.MONTH)
+    val day = c.get(Calendar.DAY_OF_MONTH)
 
 
     var dadosValidados:Boolean = false
@@ -28,10 +30,9 @@ class TaskActivity : AppCompatActivity() {
         taskBusiness = TaskBusiness(this)
         taskBusiness.SpinnerTeste(spinner)
 
-        mascaraDate()
+        //mascaraDate()
         ActionBack()
         tituloAction()
-
     }
 
     private fun buttons(){
@@ -49,20 +50,18 @@ class TaskActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
+        calendar.setOnClickListener {
+            val dpd = DatePickerDialog(this,DatePickerDialog.OnDateSetListener { datePicker, mYear, mMonth, mDay ->
+                txtDate.text = "${mDay}/${mMonth+1}/${mYear}"
+            }, year, month, day)
+            dpd.show()
+        }
+
     }
 
     private fun validarFormulario():Boolean{
         //Regra de validação
         var retorno = false
-
-
-        //para o spinner
-        /*if (!TextUtils.isEmpty(txtEmail.text.toString())){
-            retorno = true
-        }else{
-            txtEmail.setError("Insira um email por favor")
-            txtEmail.requestFocus()
-        } */
 
         if (!TextUtils.isEmpty(txtNameTask.text.toString())){
             retorno = true
@@ -110,11 +109,11 @@ class TaskActivity : AppCompatActivity() {
         txtDate.setText("")
     }
 
-    private fun mascaraDate(){
+    /*private fun mascaraDate(){
         var smf = SimpleMaskFormatter("NN/NN/NNNN")
         var mtw = MaskTextWatcher(txtDate,smf)
         txtDate.addTextChangedListener(mtw)
-    }
+    }*/
 
     private fun ActionBack(){
         val ab = supportActionBar
@@ -125,4 +124,6 @@ class TaskActivity : AppCompatActivity() {
         val ab = supportActionBar
         ab!!.setTitle(R.string.cadastro_tarefas)
     }
+
+
 }
