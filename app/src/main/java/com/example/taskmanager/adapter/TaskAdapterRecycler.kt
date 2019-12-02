@@ -34,6 +34,8 @@ class TaskAdapterRecycler(var c: Context, var task:MutableList<Task>) :
     lateinit var  dialog: Dialog
     lateinit var botaoYes: Button
     lateinit var botaoNo: Button
+    lateinit var botaoSalvar: Button
+    lateinit var botaoCancelar: Button
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val view = LayoutInflater.from(c).inflate(R.layout.inflatertask, parent, false)
@@ -84,6 +86,25 @@ class TaskAdapterRecycler(var c: Context, var task:MutableList<Task>) :
 
             botaoNo = dialog.findViewById(R.id.no)
             botaoNo.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
+        }
+
+        holder.imageEdit.setOnClickListener {
+            dialog = Dialog(c)
+            dialog.setContentView(R.layout.dialog_edit_task)
+            dialog.setCancelable(true)
+
+            botaoSalvar = dialog.findViewById(R.id.save_alteracao)
+            botaoSalvar.setOnClickListener {
+                //Lógica do editar
+                dialog.dismiss()
+            }
+
+            botaoCancelar = dialog.findViewById(R.id.cancele_alteracao)
+            botaoCancelar.setOnClickListener {
                 dialog.dismiss()
             }
 
