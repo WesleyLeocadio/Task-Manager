@@ -69,14 +69,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-            <TextView
-                android:id="@+id/txtDate"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="15dp"
-                android:hint="@string/data_vencimento" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,16 +77,37 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:orientation="horizontal">
-            <Button
-                android:id="@+id/calendar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Aperte aqui para selecionar uma data"
+
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="436dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/button_background"/>
+                android:layout_weight="6"
+                android:hint="@string/data_vencimento" />
+
+            <!--<Button
+                android:id="@+id/calendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/ic_delete"/> -->
+
+            <ImageButton
+                android:id="@+id/calendar"
+                android:layout_width="36dp"
+                android:layout_height="39dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/ic_date_range_black_24dp" />
+
         </LinearLayout>
 
         <LinearLayout

@@ -1,5 +1,6 @@
 package com.example.taskmanager.adapter
 
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import android.util.Log
@@ -15,7 +16,8 @@ import com.example.taskmanager.connectionBD.AppDatabase
 import com.example.taskmanager.domain.Subject
 import com.example.taskmanager.domain.Task
 import com.example.taskmanager.viewholder.TaskViewHolder
-import java.util.ArrayList
+import kotlinx.android.synthetic.main.activity_task.*
+import java.util.*
 
 class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
 
@@ -34,6 +36,12 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
     lateinit var botaoNo: Button
     lateinit var botaoSalvar: Button
     lateinit var botaoCancelar: Button
+    lateinit var buttonCalendar:ImageButton
+
+    val calendario = Calendar.getInstance()
+    val year = calendario.get(Calendar.YEAR)
+    val month = calendario.get(Calendar.MONTH)
+    val day = calendario.get(Calendar.DAY_OF_MONTH)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val view = LayoutInflater.from(c).inflate(R.layout.inflatertask, parent, false)
@@ -104,6 +112,9 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
             var chec = dialog.findViewById<CheckBox>(R.id.ckcConcluida)
 
 
+
+
+
             name.text = taskAtual.name
             descricao.text = taskAtual.description
             date.text = taskAtual.dueDate
@@ -136,6 +147,15 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
             botaoCancelar.setOnClickListener {
 
                 dialog.dismiss()
+            }
+
+            buttonCalendar = dialog.findViewById(R.id.calendarDialog)
+            buttonCalendar.setOnClickListener {
+                val dpd = DatePickerDialog(c,
+                    DatePickerDialog.OnDateSetListener { datePicker, mYear, mMonth, mDay ->
+                        date.text = "${mDay}/${mMonth+1}/${mYear}"
+                    }, year, month, day)
+                dpd.show()
             }
 
             dialog.show()

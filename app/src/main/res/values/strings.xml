@@ -59,4 +59,9 @@
     <string name="descricao_tarefa">Descrição da Tarefa</string>
     <string name="cancelar">Cancelar</string>
     <string name="salvar">Salvar</string>
+    <string name="data_de_vencimento">Data de Vencimento</string>
+    <string name="descricao_da_tarefa">Descrição da tarefa</string>
+    <string name="concluida">Concluída</string>
+    <string name="nome_da_tarefa">Nome da tarefa</string>
+    <string name="edicao_de_tarefa">Edição de Tarefa</string>
 </resources>

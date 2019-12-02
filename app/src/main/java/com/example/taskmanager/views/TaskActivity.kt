@@ -30,7 +30,6 @@ class TaskActivity : AppCompatActivity() {
         taskBusiness = TaskBusiness(this)
         taskBusiness.SpinnerTeste(spinner)
 
-        //mascaraDate()
         ActionBack()
         tituloAction()
     }
@@ -108,12 +107,6 @@ class TaskActivity : AppCompatActivity() {
         txtDescriptionTask.setText("")
         txtDate.setText("")
     }
-
-    /*private fun mascaraDate(){
-        var smf = SimpleMaskFormatter("NN/NN/NNNN")
-        var mtw = MaskTextWatcher(txtDate,smf)
-        txtDate.addTextChangedListener(mtw)
-    }*/
 
     private fun ActionBack(){
         val ab = supportActionBar
