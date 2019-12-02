@@ -46,7 +46,6 @@
     <string name="menu_todo">Tarefas à fazer</string>
     <string name="menu_logout">Sair</string>
     <string name="description">Description</string>
-    <string name="cancelar">Cancelar</string>
     <string name="cadastrar_tarefa">Cadastrar Tarefa</string>
     <string name="cadastrar_disciplina">Cadastrar Disciplina</string>
     <string name="selecione_uma_disciplina">Selecione uma Disciplina:</string>
@@ -58,4 +57,6 @@
     <string name="descricao_disciplina">Descrição da Disciplina</string>
     <string name="nome_tarefa">Nome da Tarefa</string>
     <string name="descricao_tarefa">Descrição da Tarefa</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="salvar">Salvar</string>
 </resources>

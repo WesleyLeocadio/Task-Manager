@@ -26,6 +26,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var fm = supportFragmentManager
+        fm.beginTransaction().replace(
+            R.id.nav_host_fragment,
+            HomeFragment(), "Fragment 1"
+        ).commit()
+
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -50,7 +56,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //botão +
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            startActivity(Intent(this,TaskActivity::class.java))
+            startActivity(Intent(this, TaskActivity::class.java))
         }
 
     }
@@ -76,17 +82,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         var fm = supportFragmentManager
         when (item.itemId) {
-            R.id.nav_home -> fm.beginTransaction().replace(R.id.nav_host_fragment,
-                HomeFragment(), "Fragment 1").commit()
+            R.id.nav_home -> fm.beginTransaction().replace(
+                R.id.nav_host_fragment,
+                HomeFragment(), "Fragment 1"
+            ).commit()
 
-            R.id.nav_register -> fm.beginTransaction().replace(R.id.nav_host_fragment,
-                RegisterSubjectFragment(), "Fragment 1").commit()
+            R.id.nav_register -> fm.beginTransaction().replace(
+                R.id.nav_host_fragment,
+                RegisterSubjectFragment(), "Fragment 1"
+            ).commit()
 
-            R.id.nav_done -> fm.beginTransaction().replace(R.id.nav_host_fragment,
-                TaskFragment(1), "Fragment 1").commit()
+            R.id.nav_done -> fm.beginTransaction().replace(
+                R.id.nav_host_fragment,
+                TaskFragment(1), "Fragment 1"
+            ).commit()
 
-            R.id.nav_todo -> fm.beginTransaction().replace(R.id.nav_host_fragment,
-                TaskFragment(0), "Fragment 1").commit()
+            R.id.nav_todo -> fm.beginTransaction().replace(
+                R.id.nav_host_fragment,
+                TaskFragment(0), "Fragment 1"
+            ).commit()
 
             R.id.nav_logout -> logout()
 
