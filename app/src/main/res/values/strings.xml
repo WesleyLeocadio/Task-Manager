@@ -50,7 +50,7 @@
     <string name="cadastrar_disciplina">Cadastrar Disciplina</string>
     <string name="selecione_uma_disciplina">Selecione uma Disciplina:</string>
     <string name="dialog_delete">Você tem certeza que deseja excluir essa tarefa?</string>
-    <string name="dialog_delete_subject">Você tem certeza que deseja excluir essa disciplinha? Todas as tarefas relacionadas também serão excluídas!</string>
+    <string name="dialog_delete_subject">Você tem certeza que deseja excluir essa disciplina?</string>
     <string name="no_cancele">Não, cancele!</string>
     <string name="yes_delete">Sim, delete!</string>
     <string name="tarefa_delete">Tarefa deletada!</string>
@@ -67,4 +67,5 @@
     <string name="nome_da_tarefa">Nome da tarefa</string>
     <string name="edicao_de_tarefa">Edição de Tarefa</string>
     <string name="edicao_disciplina">Edição de Disciplina</string>
+    <string name="todas_as_tarefas_relacionadas_tambem_serao_excluidas">Todas as tarefas relacionadas também serão excluídas!</string>
 </resources>

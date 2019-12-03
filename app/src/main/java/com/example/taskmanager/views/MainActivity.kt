@@ -8,15 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import com.example.taskmanager.R
 import com.example.taskmanager.ui.subject.HomeFragment
 import com.example.taskmanager.ui.subject.RegisterSubjectFragment
 import com.example.taskmanager.ui.task.TaskFragment
-import com.example.taskmanager.ui.todo.TodoFragment
 import com.example.taskmanager.util.SecurityPreferences
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_register_user.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var sharedPreferences: SecurityPreferences
@@ -46,12 +47,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
         drawer.setDrawerListener(toggle)
         toggle.syncState()
+
+        sharedPreferences = SecurityPreferences(this)
+
         //menu lateral
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
-        sharedPreferences = SecurityPreferences(this)
-
+        //menu lateral esquerdo onde fica localizado foto do usuário, nome e email
+        val headView = navigationView.getHeaderView(0)
+        val txtName = headView.findViewById<TextView>(R.id.textViewName)
+        val txtEmail = headView.findViewById<TextView>(R.id.textViewEmail)
+        txtEmail.text = sharedPreferences.getPreferences("USER_EMAIL")
+        txtName.text = sharedPreferences.getPreferences("USER_NAME")
 
         //botão +
         val fab = findViewById<FloatingActionButton>(R.id.fab)
