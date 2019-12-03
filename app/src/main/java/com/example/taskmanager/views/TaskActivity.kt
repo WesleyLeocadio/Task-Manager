@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.taskmanager.R
@@ -119,4 +120,35 @@ class TaskActivity : AppCompatActivity() {
     }
 
 
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val nome = findViewById<TextView>(R.id.txtNameTask)
+        val descricao = findViewById<TextView>(R.id.txtDescriptionTask)
+        val data = findViewById<TextView>(R.id.txtDate)
+
+        val userText:CharSequence = nome.text
+        val descText:CharSequence = descricao.text
+        val dateText:CharSequence = data.text
+        outState.putCharSequence("nameSaved",userText)
+        outState.putCharSequence("desSaved",descText)
+        outState.putCharSequence("dateSaved",dateText)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        val nome = findViewById<TextView>(R.id.txtNameTask)
+        val descricao = findViewById<TextView>(R.id.txtDescriptionTask)
+        val data = findViewById<TextView>(R.id.txtDate)
+
+        val userText: CharSequence? = savedInstanceState.getCharSequence("nameSaved")
+        val descText: CharSequence? = savedInstanceState.getCharSequence("desSaved")
+        val dataText: CharSequence? = savedInstanceState.getCharSequence("dateSaved")
+
+        nome.text = userText
+        descricao.text = descText
+        data.text = dataText
+    }
 }

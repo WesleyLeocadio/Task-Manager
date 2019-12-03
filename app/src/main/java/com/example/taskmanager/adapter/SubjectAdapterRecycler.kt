@@ -52,37 +52,41 @@ class SubjectAdapterRecycler(var c: Context, var subjects: MutableList<Subject>)
         holder.name.text = "Disciplina:" + subjectAtual.name
         holder.description.text = "Descrição:" + subjectAtual.description
 
-//       holder.imageEdit.setOnClickListener {
-//            dialog = Dialog(c)
-//            dialog.setContentView(R.layout.dialog_edit_subject)
-//            dialog.setCancelable(true)
-//
-//            var name = dialog.findViewById<TextView>(R.id.txtNameSubjectDialog)
-//            var descricao = dialog.findViewById<TextView>(R.id.txtDescriptionSubjectDialog)
-//
-//            name.text = subjectAtual.name
-//            descricao.text = subjectAtual.description
-//
-//           Log.i("teste", "${subjectAtual.name}")
-//
-//            botaoSalvar = dialog.findViewById(R.id.save_alteracao_subject)
-//            botaoSalvar.setOnClickListener {
-//                //Validação dos campos
-//
-//                subjectAtual.name = name.text.toString()
-//                subjectAtual.description = descricao.text.toString()
-//
-//                db.subjectDao().atualizar(subjectAtual)
-//                notifyItemChanged(position)
-//                dialog.dismiss()
-//            }
-//
-//            botaoCancelar = dialog.findViewById(R.id.cancele_alteracao_subject)
-//            botaoCancelar.setOnClickListener {
-//
-//                dialog.dismiss()
-//            }
-//        }
+       holder.imageEdit.setOnClickListener {
+
+            dialog = Dialog(c)
+            dialog.setContentView(R.layout.dialog_edit_subject)
+            dialog.setCancelable(true)
+           Log.i("teste", "${subjectAtual.name}")
+
+            var name = dialog.findViewById<TextView>(R.id.txtNameSubjectDialog)
+            var descricao = dialog.findViewById<TextView>(R.id.txtDescriptionSubjectDialog)
+
+            name.text = subjectAtual.name
+            descricao.text = subjectAtual.description
+
+           Log.i("teste", "${subjectAtual.name}")
+
+            botaoSalvar = dialog.findViewById(R.id.save_alteracao_subject)
+            botaoSalvar.setOnClickListener {
+                //Validação dos campos
+
+                subjectAtual.name = name.text.toString()
+                subjectAtual.description = descricao.text.toString()
+
+                db.subjectDao().atualizar(subjectAtual)
+                notifyItemChanged(position)
+                dialog.dismiss()
+            }
+
+            botaoCancelar = dialog.findViewById(R.id.cancele_alteracao_subject)
+            botaoCancelar.setOnClickListener {
+
+                dialog.dismiss()
+            }
+
+            dialog.show()
+        }
 
         holder.imageDelete.setOnClickListener {
             dialog = Dialog(c)
