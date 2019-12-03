@@ -68,4 +68,5 @@
     <string name="edicao_de_tarefa">Edição de Tarefa</string>
     <string name="edicao_disciplina">Edição de Disciplina</string>
     <string name="todas_as_tarefas_relacionadas_tambem_serao_excluidas">Todas as tarefas relacionadas também serão excluídas!</string>
+    <string name="mensagem_cadastro_disciplina">É necessário ter pelo menos uma disciplina cadastrada</string>
 </resources>

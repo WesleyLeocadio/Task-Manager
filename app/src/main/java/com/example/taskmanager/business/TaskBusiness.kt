@@ -17,7 +17,7 @@ class TaskBusiness (val context: Context) {
         Room.databaseBuilder(context, AppDatabase::class.java, "task-bd").allowMainThreadQueries()
             .build()
 
-    private var id: Int = 0
+    private var id: Int = -1
     private val sharedPreferences: SecurityPreferences = SecurityPreferences(context)
 
     @Throws(ValidationException::class)
@@ -59,6 +59,10 @@ class TaskBusiness (val context: Context) {
 
             }
 
+
+            if(id==-1){
+                throw ValidationException(context.getString(R.string.cadastrar_disciplina))
+            }
             db.taskDao().insert(Task(name,description,date,complete,id))
             Toast.makeText(context,"Cadastro realizado!", Toast.LENGTH_SHORT).show()
             //Log.i("id","-------------------${db.taskDao().listAll()[1].description}")

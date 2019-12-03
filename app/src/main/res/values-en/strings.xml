@@ -47,4 +47,5 @@
     <string name="tarefa_delete">Task deleted!</string>
     <string name="todas_as_tarefas_relacionadas_tambem_serao_excluidas">"All related tasks will also be deleted! tasks Traduções de tasks SubstantivoFrequência osafazeres tasks, business, affair, activity Veja também task "</string>
     <string name="yes_delete">Yes, delete!</string>
+    <string name="mensagem_cadastro_disciplina">Must have at least one enrolled course</string>
 </resources>
