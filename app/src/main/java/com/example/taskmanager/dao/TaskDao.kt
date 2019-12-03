@@ -15,6 +15,9 @@ interface TaskDao {
     @Query("SELECT * FROM task  WHERE  subject=:id")
     fun listAllTaskSubject(id:Int): List<Task>
 
+    @Query("DELETE  FROM task  WHERE  subject=:id")
+    fun deletAllTaskSubjectId(id:Int):Int
+
     @Insert
     fun insert(book: Task): Long
 

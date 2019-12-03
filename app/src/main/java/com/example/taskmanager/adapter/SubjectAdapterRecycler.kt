@@ -2,6 +2,8 @@ package com.example.taskmanager.adapter
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.example.taskmanager.viewholder.SubjectViewHolder
 import com.example.taskmanager.R
+import com.example.taskmanager.TaskSubjectActivity
 import com.example.taskmanager.connectionBD.AppDatabase
 import com.example.taskmanager.domain.Subject
 
@@ -49,37 +52,37 @@ class SubjectAdapterRecycler(var c: Context, var subjects: MutableList<Subject>)
         holder.name.text = "Disciplina:" + subjectAtual.name
         holder.description.text = "Descrição:" + subjectAtual.description
 
-       /*holder.imageEdit.setOnClickListener {
-            dialog = Dialog(c)
-            dialog.setContentView(R.layout.dialog_delete_subject)
-            dialog.setCancelable(true)
-
-            var name = dialog.findViewById<TextView>(R.id.txtNameSubjectDialog)
-            var descricao = dialog.findViewById<TextView>(R.id.txtDescriptionSubjectDialog)
-
-            name.text = subjectAtual.name
-            descricao.text = subjectAtual.description
-
-           Log.i("teste", "${subjectAtual.name}")
-
-            botaoSalvar = dialog.findViewById(R.id.save_alteracao_subject)
-            botaoSalvar.setOnClickListener {
-                //Validação dos campos
-
-                subjectAtual.name = name.text.toString()
-                subjectAtual.description = descricao.text.toString()
-
-                db.subjectDao().atualizar(subjectAtual)
-                notifyItemChanged(position)
-                dialog.dismiss()
-            }
-
-            botaoCancelar = dialog.findViewById(R.id.cancele_alteracao_subject)
-            botaoCancelar.setOnClickListener {
-
-                dialog.dismiss()
-            }
-        } */
+//       holder.imageEdit.setOnClickListener {
+//            dialog = Dialog(c)
+//            dialog.setContentView(R.layout.dialog_edit_subject)
+//            dialog.setCancelable(true)
+//
+//            var name = dialog.findViewById<TextView>(R.id.txtNameSubjectDialog)
+//            var descricao = dialog.findViewById<TextView>(R.id.txtDescriptionSubjectDialog)
+//
+//            name.text = subjectAtual.name
+//            descricao.text = subjectAtual.description
+//
+//           Log.i("teste", "${subjectAtual.name}")
+//
+//            botaoSalvar = dialog.findViewById(R.id.save_alteracao_subject)
+//            botaoSalvar.setOnClickListener {
+//                //Validação dos campos
+//
+//                subjectAtual.name = name.text.toString()
+//                subjectAtual.description = descricao.text.toString()
+//
+//                db.subjectDao().atualizar(subjectAtual)
+//                notifyItemChanged(position)
+//                dialog.dismiss()
+//            }
+//
+//            botaoCancelar = dialog.findViewById(R.id.cancele_alteracao_subject)
+//            botaoCancelar.setOnClickListener {
+//
+//                dialog.dismiss()
+//            }
+//        }
 
         holder.imageDelete.setOnClickListener {
             dialog = Dialog(c)
@@ -88,7 +91,8 @@ class SubjectAdapterRecycler(var c: Context, var subjects: MutableList<Subject>)
 
             botaoYes = dialog.findViewById(R.id.yes)
             botaoYes.setOnClickListener {
-                //val id = taskAtual.id
+                //Maneira errada. a anotacação cascata nao tá funcionando
+                db.taskDao().deletAllTaskSubjectId(subjectAtual.id)
                 db.subjectDao().deletar(subjectAtual)
                 Toast.makeText(c, R.string.disciplina_delete, Toast.LENGTH_SHORT).show()
                 subjects.removeAt(position)
@@ -102,6 +106,14 @@ class SubjectAdapterRecycler(var c: Context, var subjects: MutableList<Subject>)
             }
 
             dialog.show()
+        }
+        holder.linear.setOnClickListener {
+            var i = Intent(c, TaskSubjectActivity::class.java)
+                        var b = Bundle()
+                        b.putInt("id", subjectAtual.id)
+                        i.putExtras(b)
+                        c.startActivity(i)
+
         }
     }
 

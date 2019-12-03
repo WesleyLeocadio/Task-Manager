@@ -48,11 +48,11 @@ class HomeFragment : Fragment() {
                 object : SubjectListener.OnItemClickListener {
                     override fun onItemClick(view: View, position: Int) {
                       //  Toast.makeText(context,"${adapter.id(position)}",Toast.LENGTH_LONG).show()
-                        var i = Intent(context, TaskSubjectActivity::class.java)
-                        var b = Bundle()
-                        b.putInt("id", adapter.id(position))
-                        i.putExtras(b)
-                        startActivity(i)
+//                        var i = Intent(context, TaskSubjectActivity::class.java)
+//                        var b = Bundle()
+//                        b.putInt("id", adapter.id(position))
+//                        i.putExtras(b)
+//                        startActivity(i)
 
                     }
 

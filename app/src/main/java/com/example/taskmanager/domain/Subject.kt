@@ -10,7 +10,6 @@ class Subject(var name: String,
               @ForeignKey(
               entity = User::class,
               parentColumns = ["id"],
-
               childColumns = ["user"],onDelete = ForeignKey.CASCADE,onUpdate = ForeignKey.CASCADE)
               var  user: Int) {
     @PrimaryKey(autoGenerate = true)
