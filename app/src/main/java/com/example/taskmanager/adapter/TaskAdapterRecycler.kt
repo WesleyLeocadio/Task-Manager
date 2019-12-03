@@ -9,14 +9,10 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
-import com.example.taskmanager.domain.User
-import com.example.taskmanager.viewholder.SubjectViewHolder
 import com.example.taskmanager.R
 import com.example.taskmanager.connectionBD.AppDatabase
-import com.example.taskmanager.domain.Subject
 import com.example.taskmanager.domain.Task
 import com.example.taskmanager.viewholder.TaskViewHolder
-import kotlinx.android.synthetic.main.activity_task.*
 import java.util.*
 
 class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
@@ -56,8 +52,8 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         var taskAtual = task.get(position)
 
-        holder.description.text = taskAtual.name
-        holder.dueData.text = taskAtual.dueDate
+        holder.description.text = "Tarefa:" + taskAtual.name
+        holder.dueData.text = "Vencimento:" + taskAtual.dueDate
         holder.priority.text = "Alta"
         if (taskAtual.complete == 0) {
             holder.image.setImageResource(R.drawable.ic_todo)
@@ -112,17 +108,15 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
             var chec = dialog.findViewById<CheckBox>(R.id.ckcConcluida)
 
 
-
-
-
             name.text = taskAtual.name
             descricao.text = taskAtual.description
             date.text = taskAtual.dueDate
             discplina.text = "Disciplina: " + db.subjectDao().isSubjectId(taskAtual.subject).name
+
             Log.i("teste", "${taskAtual.complete}")
             chec.isChecked = taskAtual.complete == 1
 
-            botaoSalvar = dialog.findViewById(R.id.save_alteracao)
+            botaoSalvar = dialog.findViewById(R.id.save_alteracao_subject)
             botaoSalvar.setOnClickListener {
                 //Validação dos campos
 
@@ -143,7 +137,7 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
                 dialog.dismiss()
             }
 
-            botaoCancelar = dialog.findViewById(R.id.cancele_alteracao)
+            botaoCancelar = dialog.findViewById(R.id.cancele_alteracao_subject)
             botaoCancelar.setOnClickListener {
 
                 dialog.dismiss()

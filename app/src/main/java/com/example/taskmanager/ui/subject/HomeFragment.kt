@@ -13,6 +13,7 @@ import com.example.taskmanager.R
 import com.example.taskmanager.TaskSubjectActivity
 import com.example.taskmanager.adapter.SubjectAdapterRecycler
 import com.example.taskmanager.connectionBD.AppDatabase
+import com.example.taskmanager.domain.Subject
 import com.example.taskmanager.listener.SubjectListener
 import kotlinx.android.synthetic.main.fragment_home2.*
 
@@ -30,7 +31,9 @@ class HomeFragment : Fragment() {
         super.onResume()
 
 
-        var adapter = SubjectAdapterRecycler(this!!.getContext()!!, db.subjectDao().listAll())
+        var adapter = SubjectAdapterRecycler(this!!.getContext()!!,
+            db.subjectDao().listAll() as MutableList<Subject>
+        )
         recyclerview.adapter = adapter
 
         val layout = LinearLayoutManager(this!!.getContext()!!, LinearLayoutManager.VERTICAL, false)

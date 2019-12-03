@@ -2,6 +2,7 @@ package com.example.taskmanager.dao
 
 import androidx.room.*
 import com.example.taskmanager.domain.Subject
+import com.example.taskmanager.domain.Task
 import com.example.taskmanager.domain.User
 
 @Dao
@@ -20,9 +21,11 @@ interface SubjectDao {
     @Query("SELECT * FROM subject  WHERE  id=:id")
     fun isSubjectId(id:Int):Subject
 
+    @Delete
+    fun deletar(book: Subject): Int
 
-
-
+    @Update
+    fun atualizar(book: Subject): Int
 
 
 }

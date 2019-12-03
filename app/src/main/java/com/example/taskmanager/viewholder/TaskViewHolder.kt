@@ -23,7 +23,5 @@ class TaskViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         image = v.findViewById(R.id.imageTask)
         imageEdit = v.findViewById(R.id.imageTaskEdit)
         imageDelete= v.findViewById(R.id.imageTaskDelete)
-
-
     }
 }
