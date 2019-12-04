@@ -31,6 +31,7 @@ class TaskSubjectActivity : AppCompatActivity() {
         var idSubject = params?.getInt("id")
 
         ActionBack()
+        tituloAction()
 
        // Log.i("teste","${idSubject}")
         var adapter = TaskAdapterRecycler(this,
@@ -60,5 +61,10 @@ class TaskSubjectActivity : AppCompatActivity() {
     private fun ActionBack(){
         val ab = supportActionBar
         ab!!.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun tituloAction(){
+        val ab = supportActionBar
+        ab!!.setTitle(R.string.lista_tarefas)
     }
 }

@@ -71,12 +71,16 @@ class SubjectAdapterRecycler(var c: Context, var subjects: MutableList<Subject>)
             botaoSalvar.setOnClickListener {
                 //Validação dos campos
 
-                subjectAtual.name = name.text.toString()
-                subjectAtual.description = descricao.text.toString()
+                if (name.text.toString() == "" || descricao.text.toString() == ""){
+                    Toast.makeText(c,R.string.campos_preenchidos,Toast.LENGTH_SHORT).show()}
+                else{
+                    subjectAtual.name = name.text.toString()
+                    subjectAtual.description = descricao.text.toString()
 
-                db.subjectDao().atualizar(subjectAtual)
-                notifyItemChanged(position)
-                dialog.dismiss()
+                    db.subjectDao().atualizar(subjectAtual)
+                    notifyItemChanged(position)
+                    dialog.dismiss()
+                }
             }
 
             botaoCancelar = dialog.findViewById(R.id.cancele_alteracao_subject)

@@ -148,9 +148,6 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>, var x: In
             botaoSalvar.setOnClickListener {
                 //Validação dos campos
 
-                taskAtual.name = name.text.toString()
-                taskAtual.description = descricao.text.toString()
-                taskAtual.dueDate = date.text.toString()
                 if (chec.isChecked) {
                     taskAtual.complete = 1
                     holder.image.setImageResource(R.drawable.ic_done)
@@ -159,10 +156,17 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>, var x: In
                     holder.image.setImageResource(R.drawable.ic_todo)
                 }
 
+                if (name.text.toString() == "" || descricao.text.toString() == "" || date.text.toString() == ""){
+                    Toast.makeText(c,R.string.campos_preenchidos,Toast.LENGTH_SHORT).show()
+                }else{
+                    taskAtual.name = name.text.toString()
+                    taskAtual.description = descricao.text.toString()
+                    taskAtual.dueDate = date.text.toString()
 
-                db.taskDao().atualizar(taskAtual)
-                notifyItemChanged(position)
-                dialog.dismiss()
+                    db.taskDao().atualizar(taskAtual)
+                    notifyItemChanged(position)
+                    dialog.dismiss()
+                }
             }
 
             botaoCancelar = dialog.findViewById(R.id.cancele_alteracao_subject)
