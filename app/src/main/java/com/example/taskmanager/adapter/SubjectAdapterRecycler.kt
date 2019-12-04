@@ -128,4 +128,6 @@ class SubjectAdapterRecycler(var c: Context, var subjects: MutableList<Subject>)
     fun id(id: Int): Int {
         return subjects.get(id).id
     }
+
+
 }

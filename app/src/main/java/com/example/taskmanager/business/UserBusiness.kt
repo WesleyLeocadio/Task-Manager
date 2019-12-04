@@ -32,7 +32,7 @@ class UserBusiness(val context: Context) {
 
             val id = db.userDao().insert(User(name, telephone, email, password))
             sharedPreferences.setPreferences("USER_ID", id.toString())
-            sharedPreferences.setPreferences("USER_NAME", id.toString())
+            sharedPreferences.setPreferences("USER_NAME", name)
             sharedPreferences.setPreferences("USER_TELEFHONE", telephone)
             sharedPreferences.setPreferences("USER_EMAIL", email)
             sharedPreferences.setPreferences("USER_PASSWORD", password)

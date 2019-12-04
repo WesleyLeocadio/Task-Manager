@@ -12,7 +12,7 @@ interface TaskDao {
     @Query("SELECT * FROM task  WHERE  complete=:complete")
     fun listAllDone(complete:Int): List<Task>
 
-    @Query("SELECT * FROM task  WHERE  subject=:id")
+    @Query("SELECT * FROM  task  WHERE subject=:id ORDER BY name ASC" )
     fun listAllTaskSubject(id:Int): List<Task>
 
     @Query("DELETE  FROM task  WHERE  subject=:id")
@@ -20,8 +20,6 @@ interface TaskDao {
 
     @Insert
     fun insert(book: Task): Long
-
-
 
     @Delete
     fun deletar(book: Task): Int
@@ -31,8 +29,6 @@ interface TaskDao {
 
     @Update
     fun atualizar(book: Task): Int
-
-
 
     @Query("SELECT * FROM task  WHERE  id=:id")
     fun isTaskId(id:Int):Task
