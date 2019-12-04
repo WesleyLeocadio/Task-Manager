@@ -66,8 +66,9 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>, var x: In
                 taskAtual.complete = 1
                 db.taskDao().atualizar(taskAtual)
                 notifyItemChanged(position)
-                task.removeAt(position)
-                notifyItemRemoved(position)
+
+                task.remove(taskAtual)
+                notifyDataSetChanged()
                 Toast.makeText(c, "A tarefa ${taskAtual.name} foi concluída!", Toast.LENGTH_SHORT)
                     .show()
 
@@ -76,8 +77,8 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>, var x: In
                 taskAtual.complete = 0
                 db.taskDao().atualizar(taskAtual)
                 notifyItemChanged(position)
-                task.removeAt(position)
-                notifyItemRemoved(position)
+                task.remove(taskAtual)
+                notifyDataSetChanged()
                 Toast.makeText(c, "A tarefa ${taskAtual.name} foi aberta!", Toast.LENGTH_SHORT)
                     .show()
 
@@ -110,8 +111,9 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>, var x: In
                 //val id = taskAtual.id
                 db.taskDao().deletar(taskAtual)
                 Toast.makeText(c, R.string.tarefa_delete, Toast.LENGTH_SHORT).show()
-                task.removeAt(position)
-                notifyItemRemoved(position)
+                Log.i("index","${position}")
+                task.remove(taskAtual)
+                notifyDataSetChanged()
                 dialog.dismiss()
             }
 

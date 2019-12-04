@@ -57,7 +57,6 @@ class SubjectAdapterRecycler(var c: Context, var subjects: MutableList<Subject>)
             dialog = Dialog(c)
             dialog.setContentView(R.layout.dialog_edit_subject)
             dialog.setCancelable(true)
-           Log.i("teste", "${subjectAtual.name}")
 
             var name = dialog.findViewById<TextView>(R.id.txtNameSubjectDialog)
             var descricao = dialog.findViewById<TextView>(R.id.txtDescriptionSubjectDialog)
@@ -65,7 +64,6 @@ class SubjectAdapterRecycler(var c: Context, var subjects: MutableList<Subject>)
             name.text = subjectAtual.name
             descricao.text = subjectAtual.description
 
-           Log.i("teste", "${subjectAtual.name}")
 
             botaoSalvar = dialog.findViewById(R.id.save_alteracao_subject)
             botaoSalvar.setOnClickListener {
@@ -103,8 +101,10 @@ class SubjectAdapterRecycler(var c: Context, var subjects: MutableList<Subject>)
                 db.taskDao().deletAllTaskSubjectId(subjectAtual.id)
                 db.subjectDao().deletar(subjectAtual)
                 Toast.makeText(c, R.string.disciplina_delete, Toast.LENGTH_SHORT).show()
-                subjects.removeAt(position)
-                notifyItemRemoved(position)
+//                subjects.removeAt(position)
+//                notifyItemRemoved(position)
+                subjects.remove(subjectAtual)
+                notifyDataSetChanged()
                 dialog.dismiss()
             }
 
