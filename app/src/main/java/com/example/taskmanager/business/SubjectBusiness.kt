@@ -20,20 +20,21 @@ class SubjectBusiness (val context: Context) {
 
     @Throws(ValidationException::class)
 
-    fun insert(name: String, description: String) {
+    fun insert(name: String, description: String):Int {
         try {
             Log.i("id","Name: ${name},  desc: ${description}")
 
             if (name.equals("") || description.equals("")) {
-                throw ValidationException(context.getString(R.string.informar_campos))
+                return 1
             }
             if (db.subjectDao().isSubjectExistent(name)) {
-                throw ValidationException("Disciplina já foi cadastrada!")
+               // throw ValidationException("Disciplina já foi cadastrada!")
+                return 2
             }
 
             db.subjectDao().insert(Subject(name,description,sharedPreferences.getPreferences("USER_ID").toInt()))
             Toast.makeText(context,"Cadastro realizado!",Toast.LENGTH_SHORT).show()
-
+            return 0
         } catch (e: Exception) {
             throw e
         }

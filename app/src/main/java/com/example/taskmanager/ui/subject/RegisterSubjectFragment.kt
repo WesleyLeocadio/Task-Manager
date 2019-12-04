@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.taskmanager.R
 import com.example.taskmanager.business.SubjectBusiness
 import com.example.taskmanager.business.UserBusiness
+import com.example.taskmanager.util.ValidationException
 import com.example.taskmanager.views.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_register_subject.*
@@ -22,11 +23,11 @@ class RegisterSubjectFragment : Fragment() {
 
     private lateinit var subjectBusiness: SubjectBusiness
 
-    var dadosValidados:Boolean = false
+    var dadosValidados: Boolean = false
 
     override fun onResume() {
         super.onResume()
-        subjectBusiness = SubjectBusiness( this!!.getContext()!!)
+        subjectBusiness = SubjectBusiness(this!!.getContext()!!)
         buttons()
     }
 
@@ -43,15 +44,17 @@ class RegisterSubjectFragment : Fragment() {
 
     private fun buttons() {
         btnRegister.setOnClickListener {
-           dadosValidados = validarFormulario()
-           if (dadosValidados){
-               subjectBusiness.insert(txtName.text.toString(), txtDescription.text.toString())
-               startActivity(Intent(this!!.context, MainActivity::class.java))
-           }else{
-               Toast.makeText(this!!.context, getString(R.string.dados_incorretos), Toast.LENGTH_LONG)
-                   .show()
-           }
-
+            dadosValidados = validarFormulario()
+            if (dadosValidados) {
+                val x = subjectBusiness.insert(txtName.text.toString(), txtDescription.text.toString())
+                if (x == 1) {
+                } else if (x == 2) {
+                    Toast.makeText(this!!.context, "Disciplina já cadastrada", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    startActivity(Intent(this!!.context, MainActivity::class.java))
+                }
+            }
         }
 
         btnCancel.setOnClickListener {
@@ -70,22 +73,20 @@ class RegisterSubjectFragment : Fragment() {
     }
 
 
-
-
-    private fun validarFormulario():Boolean{
+    private fun validarFormulario(): Boolean {
         //Regra de validação
         var retorno = false
 
-        if (!TextUtils.isEmpty(txtName.text.toString())){
+        if (!TextUtils.isEmpty(txtName.text.toString())) {
             retorno = true
-        }else{
+        } else {
             txtName.setError("Por favor, insira um nome para a disciplina")
             txtName.requestFocus()
         }
 
-        if (!TextUtils.isEmpty(txtDescription.text.toString())){
+        if (!TextUtils.isEmpty(txtDescription.text.toString())) {
             retorno = true
-        }else{
+        } else {
             txtDescription.setError("Por favor, insira uma descrição")
             txtDescription.requestFocus()
         }
