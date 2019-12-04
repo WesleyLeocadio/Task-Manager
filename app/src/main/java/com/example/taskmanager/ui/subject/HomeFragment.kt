@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         val layout = LinearLayoutManager(this!!.getContext()!!, LinearLayoutManager.VERTICAL, false)
         recyclerview.layoutManager = layout
 
-
+        activity!!.title = "Disciplinas"
 
         recyclerview.addOnItemTouchListener(
             SubjectListener(
@@ -69,6 +69,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_home2, container, false)
+
+        //val ab = (activity as AppCompatActivity).supportActionBar
+        //ab!!.title = "Cadastrar Disciplinas"
+
+
     }
 
 }

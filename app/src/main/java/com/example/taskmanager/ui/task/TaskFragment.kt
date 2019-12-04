@@ -31,6 +31,12 @@ class TaskFragment(val x:Int) : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        when(x){
+            1 -> activity!!.title = "Tarefas Concluídas"
+            0 -> activity!!.title = "Tarefas à Fazer"
+            else -> "Tarefas"
+        }
+
 
         var adapter = TaskAdapterRecycler(this!!.getContext()!!,
             db.taskDao().listAllDone(x) as MutableList<Task>,x
@@ -66,6 +72,8 @@ class TaskFragment(val x:Int) : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_task, container, false)
+
+
     }
 
 

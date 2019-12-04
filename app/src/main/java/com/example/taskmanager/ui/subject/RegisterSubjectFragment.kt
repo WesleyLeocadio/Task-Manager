@@ -29,6 +29,8 @@ class RegisterSubjectFragment : Fragment() {
         super.onResume()
         subjectBusiness = SubjectBusiness(this!!.getContext()!!)
         buttons()
+
+        activity!!.title = "Cadastro de Disciplinas"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +40,8 @@ class RegisterSubjectFragment : Fragment() {
         ab!!.title = "Cadastrar Disciplinas"
         // Enable the Up button
         ab!!.setDisplayHomeAsUpEnabled(true) */
+
+
 
     }
 
