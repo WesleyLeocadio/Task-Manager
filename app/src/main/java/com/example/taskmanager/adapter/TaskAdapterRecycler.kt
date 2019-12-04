@@ -15,7 +15,7 @@ import com.example.taskmanager.domain.Task
 import com.example.taskmanager.viewholder.TaskViewHolder
 import java.util.*
 
-class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
+class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>, var x: Int) :
 
     RecyclerView.Adapter<TaskViewHolder>() {
     val db: AppDatabase by lazy {
@@ -32,7 +32,7 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
     lateinit var botaoNo: Button
     lateinit var botaoSalvar: Button
     lateinit var botaoCancelar: Button
-    lateinit var buttonCalendar:ImageButton
+    lateinit var buttonCalendar: ImageButton
 
     val calendario = Calendar.getInstance()
     val year = calendario.get(Calendar.YEAR)
@@ -62,10 +62,38 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
         }
 
         holder.image.setOnClickListener {
-            taskAtual.complete = 1
-            db.taskDao().atualizar(taskAtual)
-            notifyItemChanged(position)
+            if (x == 0) {
+                taskAtual.complete = 1
+                db.taskDao().atualizar(taskAtual)
+                notifyItemChanged(position)
+                task.removeAt(position)
+                notifyItemRemoved(position)
+                Toast.makeText(c, "A tarefa ${taskAtual.name} foi concluída!", Toast.LENGTH_SHORT)
+                    .show()
 
+
+            } else if (x == 1) {
+                taskAtual.complete = 0
+                db.taskDao().atualizar(taskAtual)
+                notifyItemChanged(position)
+                task.removeAt(position)
+                notifyItemRemoved(position)
+                Toast.makeText(c, "A tarefa ${taskAtual.name} foi aberta!", Toast.LENGTH_SHORT)
+                    .show()
+
+            } else {
+
+                if (taskAtual.complete == 0) {
+                    taskAtual.complete = 1
+                    db.taskDao().atualizar(taskAtual)
+                    notifyItemChanged(position)
+                    Toast.makeText(
+                        c,
+                        "A tarefa ${taskAtual.name} foi concluída!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
 
         }
 
@@ -147,8 +175,9 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>) :
             buttonCalendar.setOnClickListener {
                 val dpd = DatePickerDialog(c,
                     DatePickerDialog.OnDateSetListener { datePicker, mYear, mMonth, mDay ->
-                        date.text = "${mDay}/${mMonth+1}/${mYear}"
-                    }, year, month, day)
+                        date.text = "${mDay}/${mMonth + 1}/${mYear}"
+                    }, year, month, day
+                )
                 dpd.show()
             }
 

@@ -34,7 +34,7 @@ class TaskSubjectActivity : AppCompatActivity() {
 
        // Log.i("teste","${idSubject}")
         var adapter = TaskAdapterRecycler(this,
-            db.taskDao().listAllTaskSubject(idSubject!!.toInt()) as MutableList<Task>
+            db.taskDao().listAllTaskSubject(idSubject!!.toInt()) as MutableList<Task>,3
         )
         recyclerviewTaskSubjectList.adapter = adapter
         val layout = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

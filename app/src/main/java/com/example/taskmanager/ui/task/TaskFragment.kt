@@ -33,7 +33,7 @@ class TaskFragment(val x:Int) : Fragment() {
 
 
         var adapter = TaskAdapterRecycler(this!!.getContext()!!,
-            db.taskDao().listAllDone(x) as MutableList<Task>
+            db.taskDao().listAllDone(x) as MutableList<Task>,x
         )
         recyclerviewTaskList.adapter = adapter
 
