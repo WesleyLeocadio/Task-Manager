@@ -52,8 +52,8 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>, var x: In
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         var taskAtual = task.get(position)
 
-        holder.description.text = "Tarefa:" + taskAtual.name
-        holder.dueData.text = "Vencimento:" + taskAtual.dueDate
+        holder.description.text = taskAtual.name
+        holder.dueData.text = taskAtual.dueDate
 
 
         if (taskAtual.prioridade == 1){

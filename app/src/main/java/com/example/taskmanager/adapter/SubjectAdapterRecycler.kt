@@ -49,8 +49,8 @@ class SubjectAdapterRecycler(var c: Context, var subjects: MutableList<Subject>)
     override fun onBindViewHolder(holder: SubjectViewHolder, position: Int) {
         var subjectAtual = subjects.get(position)
 
-        holder.name.text = "Disciplina:" + subjectAtual.name
-        holder.description.text = "Descrição:" + subjectAtual.description
+        holder.name.text = subjectAtual.name
+        holder.description.text = subjectAtual.description
 
        holder.imageEdit.setOnClickListener {
 

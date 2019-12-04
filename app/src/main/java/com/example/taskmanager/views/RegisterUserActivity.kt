@@ -64,7 +64,7 @@ class RegisterUserActivity : AppCompatActivity() {
             Toast.makeText(this,getString(R.string.erro_inesperado),Toast.LENGTH_LONG).show()
 
         }
-        
+
     }
 
 
