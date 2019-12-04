@@ -64,12 +64,15 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textInfPriority"
+
+
+        <ImageView
+            android:id="@+id/imageTaskPrioridade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="8dp"
+            android:src="@drawable/id_edit" />
 
         <ImageView
             android:id="@+id/imageTaskEdit"

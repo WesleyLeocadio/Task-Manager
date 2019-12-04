@@ -47,7 +47,7 @@ class TaskBusiness (val context: Context) {
 
         }
     }
-    fun insert(name: String, description: String, date: String,complete:Int) {
+    fun insert(name: String, description: String, date: String,complete:Int,prioridade:Int) {
         try {
             Log.i("id","Name: ${name},  desc: ${description}, date: ${date}, complete: ${complete}, idSubjet: ${id},")
 
@@ -63,9 +63,10 @@ class TaskBusiness (val context: Context) {
             if(id==-1){
                 throw ValidationException(context.getString(R.string.cadastrar_disciplina))
             }
-            db.taskDao().insert(Task(name,description,date,complete,id))
-            Toast.makeText(context,"Cadastro realizado!", Toast.LENGTH_SHORT).show()
+            db.taskDao().insert(Task(name,description,date,complete,prioridade,id))
+            Toast.makeText(context,"$prioridade", Toast.LENGTH_SHORT).show()
             //Log.i("id","-------------------${db.taskDao().listAll()[1].description}")
+
 
 
 

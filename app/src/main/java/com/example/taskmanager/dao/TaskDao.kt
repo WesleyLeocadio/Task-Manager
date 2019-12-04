@@ -9,10 +9,10 @@ interface TaskDao {
     @Query("SELECT * FROM task")
     fun listAll(): List<Task>
 
-    @Query("SELECT * FROM task  WHERE  complete=:complete")
+    @Query("SELECT * FROM task  WHERE  complete=:complete ORDER BY prioridade ASC")
     fun listAllDone(complete:Int): List<Task>
 
-    @Query("SELECT * FROM  task  WHERE subject=:id ORDER BY name ASC" )
+    @Query("SELECT * FROM  task  WHERE subject=:id ORDER BY prioridade ASC" )
     fun listAllTaskSubject(id:Int): List<Task>
 
     @Query("DELETE  FROM task  WHERE  subject=:id")

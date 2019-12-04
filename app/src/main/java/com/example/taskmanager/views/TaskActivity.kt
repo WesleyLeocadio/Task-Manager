@@ -4,6 +4,8 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +22,7 @@ class TaskActivity : AppCompatActivity() {
     val year = c.get(Calendar.YEAR)
     val month = c.get(Calendar.MONTH)
     val day = c.get(Calendar.DAY_OF_MONTH)
+    var prioridade = -1
 
 
     var dadosValidados:Boolean = false
@@ -33,6 +36,22 @@ class TaskActivity : AppCompatActivity() {
 
         ActionBack()
         tituloAction()
+
+        radio_group.setOnCheckedChangeListener(
+            RadioGroup.OnCheckedChangeListener { group, checkedId ->
+                val radio: RadioButton = findViewById(checkedId)
+
+                if (radio.text.equals("Alta")){
+                    prioridade = 1
+                }else if(radio.text.equals("Media")){
+                    prioridade = 2
+                }else if (radio.text.equals("Baixa")){
+                    prioridade = 3
+                }else{
+                    prioridade = 2
+                }
+            })
+
     }
 
     private fun buttons(){
@@ -90,7 +109,7 @@ class TaskActivity : AppCompatActivity() {
 
     private fun salveTask(){
         try {
-            taskBusiness.insert(txtNameTask.text.toString(),txtDescriptionTask.text.toString(),txtDate.text.toString(),0)
+            taskBusiness.insert(txtNameTask.text.toString(),txtDescriptionTask.text.toString(),txtDate.text.toString(),0,prioridade)
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }catch (e: ValidationException){

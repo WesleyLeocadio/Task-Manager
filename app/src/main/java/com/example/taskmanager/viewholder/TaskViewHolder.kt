@@ -10,7 +10,7 @@ import com.example.taskmanager.R
 class TaskViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     var description: TextView
     var dueData: TextView
-    var priority: TextView
+    var priority:  ImageView
     var image: ImageView
     var imageDelete:ImageView
     var imageEdit:ImageView
@@ -19,7 +19,7 @@ class TaskViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     init {
         description = v.findViewById(R.id.textInflatDescription)
         dueData = v.findViewById(R.id.textInfDueData)
-        priority = v.findViewById(R.id.textInfPriority)
+        priority = v.findViewById(R.id.imageTaskPrioridade)
         image = v.findViewById(R.id.imageTask)
         imageEdit = v.findViewById(R.id.imageTaskEdit)
         imageDelete= v.findViewById(R.id.imageTaskDelete)

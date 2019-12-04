@@ -54,7 +54,21 @@ class TaskAdapterRecycler(var c: Context, var task: MutableList<Task>, var x: In
 
         holder.description.text = "Tarefa:" + taskAtual.name
         holder.dueData.text = "Vencimento:" + taskAtual.dueDate
-        holder.priority.text = "Alta"
+
+
+        if (taskAtual.prioridade == 1){
+            holder.priority.setImageResource(R.drawable.vermelho)
+        }else if (taskAtual.prioridade ==2){
+            holder.priority.setImageResource(R.drawable.amarelo)
+        }else if (taskAtual.prioridade ==3){
+            holder.priority.setImageResource(R.drawable.verde)
+        }else{
+            holder.priority.setImageResource(R.drawable.amarelo)
+        }
+
+
+
+
         if (taskAtual.complete == 0) {
             holder.image.setImageResource(R.drawable.ic_todo)
         } else {

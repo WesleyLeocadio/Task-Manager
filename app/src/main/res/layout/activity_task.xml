@@ -90,16 +90,6 @@
                 android:layout_weight="6"
                 android:hint="@string/data_vencimento" />
 
-            <!--<Button
-                android:id="@+id/calendar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/ic_delete"/> -->
-
             <ImageButton
                 android:id="@+id/calendar"
                 android:layout_width="36dp"
@@ -111,6 +101,42 @@
                 android:background="@drawable/ic_date_range_black_24dp" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecione uma prioridade?"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            />
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#dbeceb"
+            android:padding="15dp"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/altaPriority"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"
+                android:text="Alta" />
+
+            <RadioButton
+                android:id="@+id/mediaPriority"
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+                android:text="Media" />
+
+            <RadioButton
+                android:id="@+id/baixaPriority"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:text="Baixa" />
+        </RadioGroup>
 
         <LinearLayout
             android:layout_width="match_parent"

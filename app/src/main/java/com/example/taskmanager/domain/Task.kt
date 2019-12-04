@@ -9,11 +9,13 @@ data class Task (var name: String,
             var description: String,
             var dueDate: String,
             var complete: Int,
+            var  prioridade: Int,
             @ForeignKey(
                 entity = Subject::class,
                 parentColumns = ["id"],
                 childColumns = ["subject"],onDelete = ForeignKey.CASCADE,onUpdate = ForeignKey.CASCADE)
-            var  subject: Int) {
+            var  subject: Int
+            ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 }
