@@ -64,15 +64,9 @@ class RegisterUserActivity : AppCompatActivity() {
             Toast.makeText(this,getString(R.string.erro_inesperado),Toast.LENGTH_LONG).show()
 
         }
-        clearFields()
+        
     }
 
-    private fun clearFields(){
-       txtName.setText("")
-        txtNumber.setText("")
-        txtEmail.setText("")
-        txtPassword.setText("")
-    }
 
     private fun validarFormulario():Boolean{
         //Regra de validação

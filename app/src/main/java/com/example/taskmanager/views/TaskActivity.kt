@@ -118,14 +118,6 @@ class TaskActivity : AppCompatActivity() {
             Toast.makeText(this,getString(R.string.erro_inesperado),Toast.LENGTH_LONG).show()
 
         }
-        clearFields()
-    }
-
-
-    private fun clearFields(){
-        txtNameTask.setText("")
-        txtDescriptionTask.setText("")
-        txtDate.setText("")
     }
 
     private fun ActionBack(){

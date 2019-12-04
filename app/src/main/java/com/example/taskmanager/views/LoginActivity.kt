@@ -80,16 +80,11 @@ class LoginActivity : AppCompatActivity() {
         if (userBusiness.login(txtEmailLogin.text.toString().trim(), txtPasswordLogin.text.toString().trim())) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-            clearFields()
         }else{
             Toast.makeText(this,getString(R.string.login_e_senha_incorreto),Toast.LENGTH_LONG).show()
         }
     }
 
-     private fun clearFields(){
-        txtEmailLogin.setText("")
-         txtPasswordLogin.setText("")
-    }
 
     private fun validarFormulario():Boolean{
         //Regra de validação
