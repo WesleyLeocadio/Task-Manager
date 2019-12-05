@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="3sp"
-        android:background="@color/backgroun_inflater">
+        android:background="#d7fcff">
 
 
         <LinearLayout
